@@ -1,0 +1,298 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+
+export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+      setEmail("");
+    }
+  };
+
+  return (
+    <footer className="footer">
+      <div className="container">
+        {/* Newsletter */}
+        <div className="footer__newsletter">
+          <div className="footer__newsletter-content">
+            <h3 className="footer__newsletter-title">Stay in the loop</h3>
+            <p className="footer__newsletter-text">
+              Get exclusive offers, new service announcements, and beauty tips.
+            </p>
+          </div>
+          {subscribed ? (
+            <p className="footer__newsletter-success">Thank you for subscribing!</p>
+          ) : (
+            <form className="footer__newsletter-form" onSubmit={handleSubmit}>
+              <input
+                type="email"
+                placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="footer__newsletter-input"
+              />
+              <button type="submit" className="footer__newsletter-btn">
+                Subscribe
+              </button>
+            </form>
+          )}
+        </div>
+
+        <div className="footer__grid">
+          <div className="footer__col">
+            <h4 className="footer__heading">MGC Aesthetics</h4>
+            <p className="footer__text">
+              Premium beauty and wellness services tailored to you.
+            </p>
+            <div className="footer__social">
+              <a href="#" aria-label="Facebook" className="footer__social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram" className="footer__social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="TikTok" className="footer__social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div className="footer__col">
+            <h4 className="footer__heading">Services</h4>
+            <ul className="footer__list">
+              <li><Link href="/#services">Eyebrow Tattoo</Link></li>
+              <li><Link href="/#services">Lip Tattoo</Link></li>
+              <li><Link href="/#services">Facial</Link></li>
+              <li><Link href="/#services">Laser</Link></li>
+              <li><Link href="/#services">Tattoo Removal</Link></li>
+              <li><Link href="/#services">Foot Spa</Link></li>
+              <li><Link href="/#services">Eyelash Extension</Link></li>
+              <li><Link href="/#services">Massage</Link></li>
+              <li><Link href="/#services">Hair Removal</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer__col">
+            <h4 className="footer__heading">Quick Links</h4>
+            <ul className="footer__list">
+              <li><Link href="/#about">About</Link></li>
+              <li><Link href="/#gallery">Gallery</Link></li>
+              <li><Link href="/booking">Book Now</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer__col">
+            <h4 className="footer__heading">Contact</h4>
+            <ul className="footer__list">
+              <li>123 Beauty Lane</li>
+              <li>City, State 12345</li>
+              <li>(555) 123-4567</li>
+              <li>hello@mgcaesthetics.com</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="footer__bottom">
+          <p>&copy; {new Date().getFullYear()} MGC Aesthetics. All rights reserved.</p>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .footer {
+          background: var(--gray-900);
+          color: var(--gray-400);
+          padding: 80px 0 0;
+        }
+
+        .footer__newsletter {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 40px;
+          padding-bottom: 48px;
+          margin-bottom: 48px;
+          border-bottom: 1px solid var(--gray-800);
+        }
+
+        .footer__newsletter-title {
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--white);
+          margin-bottom: 6px;
+        }
+
+        .footer__newsletter-text {
+          font-size: 14px;
+          color: var(--gray-500);
+        }
+
+        .footer__newsletter-success {
+          font-size: 14px;
+          color: var(--gray-400);
+          flex-shrink: 0;
+        }
+
+        .footer__newsletter-form {
+          display: flex;
+          gap: 8px;
+          flex-shrink: 0;
+        }
+
+        .footer__newsletter-input {
+          padding: 10px 16px;
+          font-family: var(--font-sans);
+          font-size: 14px;
+          font-weight: 300;
+          color: var(--white);
+          background: var(--gray-800);
+          border: 1px solid var(--gray-700);
+          outline: none;
+          width: 260px;
+        }
+
+        .footer__newsletter-input::placeholder {
+          color: var(--gray-500);
+        }
+
+        .footer__newsletter-input:focus {
+          border-color: var(--gray-500);
+        }
+
+        .footer__newsletter-btn {
+          padding: 10px 24px;
+          font-family: var(--font-sans);
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: var(--black);
+          background: var(--white);
+          border: none;
+          cursor: pointer;
+          transition: background 0.2s;
+          white-space: nowrap;
+        }
+
+        .footer__newsletter-btn:hover {
+          background: var(--gray-200);
+        }
+
+        .footer__grid {
+          display: grid;
+          grid-template-columns: 1.5fr 2fr 1fr 1fr;
+          gap: 48px;
+        }
+
+        .footer__heading {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: var(--white);
+          margin-bottom: 20px;
+        }
+
+        .footer__text {
+          font-size: 14px;
+          color: var(--gray-500);
+          line-height: 1.7;
+          margin-bottom: 20px;
+        }
+
+        .footer__social {
+          display: flex;
+          gap: 12px;
+        }
+
+        .footer__social-link {
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--gray-500);
+          border: 1px solid var(--gray-700);
+          transition: all 0.2s;
+        }
+
+        .footer__social-link:hover {
+          color: var(--white);
+          border-color: var(--gray-400);
+        }
+
+        .footer__list {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .footer__list a {
+          font-size: 14px;
+          color: var(--gray-400);
+          transition: color 0.2s;
+        }
+
+        .footer__list a:hover {
+          color: var(--white);
+        }
+
+        .footer__list li {
+          font-size: 14px;
+        }
+
+        .footer__bottom {
+          padding: 32px 0;
+          margin-top: 64px;
+          border-top: 1px solid var(--gray-800);
+          text-align: center;
+        }
+
+        .footer__bottom p {
+          font-size: 13px;
+          color: var(--gray-600);
+        }
+
+        @media (max-width: 768px) {
+          .footer__newsletter {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 20px;
+          }
+
+          .footer__newsletter-form {
+            flex-direction: column;
+          }
+
+          .footer__newsletter-input {
+            width: 100%;
+          }
+
+          .footer__grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .footer__grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+    </footer>
+  );
+}

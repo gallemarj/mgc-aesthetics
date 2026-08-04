@@ -1,0 +1,120 @@
+"use client";
+
+import Reveal from "@/components/Reveal";
+
+const galleryImages = [
+  "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80",
+  "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80",
+  "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&q=80",
+  "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80",
+  "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&q=80",
+  "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80",
+  "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=600&q=80",
+  "https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?w=600&q=80",
+  "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80",
+  "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=600&q=80",
+  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80",
+  "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80",
+  "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80",
+  "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&q=80",
+  "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80",
+  "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&q=80",
+];
+
+export default function GalleryPage() {
+  return (
+    <div className="page">
+      <section className="page-hero">
+        <div className="container">
+          <p className="page-hero__sub">Our work</p>
+          <h1>Gallery</h1>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="grid">
+            {galleryImages.map((url, i) => (
+              <Reveal key={i} variant="scaleUp" delay={(i % 4) * 0.05}>
+                <div className={`grid__item ${i % 5 === 0 ? "grid__item--featured" : ""}`}>
+                  <div className="grid__image" style={{ backgroundImage: `url(${url})` }} />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
+        .page-hero {
+          background: var(--off-white);
+          padding: 160px 0 80px;
+          text-align: center;
+        }
+
+        .page-hero__sub {
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: var(--gray-500);
+          margin-bottom: 12px;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+        }
+
+        .grid__item {
+          aspect-ratio: 1;
+          overflow: hidden;
+          border-radius: 8px;
+        }
+
+        .grid__item--featured {
+          grid-column: span 2;
+          grid-row: span 2;
+        }
+
+        .grid__image {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          transition: transform 0.6s ease;
+        }
+
+        .grid__item:hover .grid__image {
+          transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+          .grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .grid__item--featured {
+            grid-column: span 2;
+            grid-row: span 1;
+          }
+
+          .page-hero {
+            padding: 120px 0 60px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .grid {
+            grid-template-columns: 1fr;
+          }
+
+          .grid__item--featured {
+            grid-column: span 1;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}

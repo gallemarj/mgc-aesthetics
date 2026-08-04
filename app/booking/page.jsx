@@ -1,0 +1,152 @@
+"use client";
+
+import HeroSection from "@/components/HeroSection";
+import BookingForm from "@/components/BookingForm";
+import Reveal from "@/components/Reveal";
+
+export default function BookingPage() {
+  return (
+    <div className="page">
+      <HeroSection
+        title="Book an appointment"
+        subtitle="Get started"
+        variant="simple"
+        imageKey="booking"
+      />
+
+      <section className="section">
+        <div className="container">
+          <div className="booking-layout">
+            <Reveal variant="slideLeft">
+              <div className="booking-info">
+                <p className="section__subtitle">How it works</p>
+                <h2 className="section__title" style={{ marginBottom: 20 }}>
+                  Ready for your visit?
+                </h2>
+                <p>
+                  Fill out the form and we&apos;ll get back to you within 24 hours
+                  to confirm your appointment. Have questions? Use the chat bubble
+                  to message us directly.
+                </p>
+
+                <div className="booking-contact">
+                  <div>
+                    <strong>Phone</strong>
+                    <p>(555) 123-4567</p>
+                  </div>
+                  <div>
+                    <strong>Email</strong>
+                    <p>hello@mgcaesthetics.com</p>
+                  </div>
+                </div>
+
+                <a
+                  className="messenger-btn"
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert(
+                      "Messenger chat is not yet connected.\n\nTo set up:\n1. Create a Facebook Page for MGC Aesthetics\n2. Go to Page Settings → Messaging\n3. Follow Facebook's steps to add Messenger to your site\n4. Replace YOUR_PAGE_ID in components/MessengerChat.jsx"
+                    );
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 6.016 4.432 10.984 10.208 11.852V15.18H7.237v-3.18h2.971V9.726c0-2.935 1.75-4.556 4.424-4.556 1.282 0 2.624.229 2.624.229v2.883h-1.478c-1.456 0-1.91.903-1.91 1.83v2.198h3.25l-.519 3.18h-2.731v8.672C19.568 22.984 24 18.016 24 12 24 12 5.373 18.627 0 12 0z" />
+                  </svg>
+                  Contact us on Messenger
+                </a>
+              </div>
+            </Reveal>
+            <Reveal variant="slideRight" delay={0.15}>
+              <div className="booking-form">
+                <div className="form-wrapper">
+                  <BookingForm />
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
+        .booking-layout {
+          display: grid;
+          grid-template-columns: 1fr 1.2fr;
+          gap: 80px;
+          align-items: start;
+        }
+
+        .booking-info p {
+          font-size: 15px;
+          line-height: 1.8;
+          margin-bottom: 32px;
+        }
+
+        .booking-contact {
+          display: flex;
+          gap: 48px;
+          padding-top: 24px;
+          border-top: 1px solid var(--gray-200);
+        }
+
+        .booking-contact strong {
+          display: block;
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--gray-500);
+          margin-bottom: 4px;
+        }
+
+        .booking-contact p {
+          font-size: 15px;
+          color: var(--black);
+          margin: 0;
+        }
+
+        .messenger-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 24px;
+          padding: 14px 28px;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 0.02em;
+          color: var(--white);
+          background: #0084ff;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+          box-shadow: 0 4px 16px rgba(0, 132, 255, 0.3);
+        }
+
+        .messenger-btn:hover {
+          background: #0072e5;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(0, 132, 255, 0.4);
+        }
+
+        .form-wrapper {
+          background: var(--white);
+          padding: 40px;
+          border: 1px solid var(--gray-200);
+        }
+
+        @media (max-width: 768px) {
+          .booking-layout {
+            grid-template-columns: 1fr;
+            gap: 48px;
+          }
+
+          .form-wrapper {
+            padding: 24px;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
