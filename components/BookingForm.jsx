@@ -36,22 +36,7 @@ export default function BookingForm() {
         <h3>Thank you</h3>
         <p>Your booking request has been sent. We&apos;ll get back to you shortly.</p>
 
-        <style jsx>{`
-          .success {
-            text-align: center;
-            padding: 80px 32px;
-            border: 1px solid var(--gray-200);
-          }
-
-          .success h3 {
-            font-size: 24px;
-            margin-bottom: 12px;
-          }
-
-          .success p {
-            color: var(--gray-500);
-          }
-        `}</style>
+        
       </div>
     );
   }
@@ -133,29 +118,7 @@ export default function BookingForm() {
         {loading ? "Sending..." : "Send Booking Request"}
       </button>
 
-      <style jsx>{`
-        .form {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .form__row {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-        }
-
-        textarea {
-          resize: vertical;
-        }
-
-        @media (max-width: 600px) {
-          .form__row {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
+      
     </form>
   );
 }

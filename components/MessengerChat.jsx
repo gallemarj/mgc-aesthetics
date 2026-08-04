@@ -50,32 +50,7 @@ export default function MessengerChat() {
           <path d="M12 0C5.373 0 0 5.373 0 12c0 6.016 4.432 10.984 10.208 11.852V15.18H7.237v-3.18h2.971V9.726c0-2.935 1.75-4.556 4.424-4.556 1.282 0 2.624.229 2.624.229v2.883h-1.478c-1.456 0-1.91.903-1.91 1.83v2.198h3.25l-.519 3.18h-2.731v8.672C19.568 22.984 24 18.016 24 12 24 5.373 18.627 0 12 0z" />
         </svg>
 
-        <style jsx>{`
-          .messenger-fallback {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 999;
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: var(--white);
-            border-radius: 50%;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s, background 0.2s;
-          }
-
-          .messenger-fallback:hover {
-            transform: scale(1.1);
-            background: rgba(255, 255, 255, 0.2);
-          }
-        `}</style>
+        
       </a>
     </>
   );

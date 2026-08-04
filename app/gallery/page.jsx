@@ -45,76 +45,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <style jsx>{`
-        .page-hero {
-          background: var(--off-white);
-          padding: 160px 0 80px;
-          text-align: center;
-        }
-
-        .page-hero__sub {
-          font-size: 13px;
-          font-weight: 500;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: var(--gray-500);
-          margin-bottom: 12px;
-        }
-
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 8px;
-        }
-
-        .grid__item {
-          aspect-ratio: 1;
-          overflow: hidden;
-          border-radius: 8px;
-        }
-
-        .grid__item--featured {
-          grid-column: span 2;
-          grid-row: span 2;
-        }
-
-        .grid__image {
-          width: 100%;
-          height: 100%;
-          background-size: cover;
-          background-position: center;
-          transition: transform 0.6s ease;
-        }
-
-        .grid__item:hover .grid__image {
-          transform: scale(1.05);
-        }
-
-        @media (max-width: 768px) {
-          .grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .grid__item--featured {
-            grid-column: span 2;
-            grid-row: span 1;
-          }
-
-          .page-hero {
-            padding: 120px 0 60px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .grid {
-            grid-template-columns: 1fr;
-          }
-
-          .grid__item--featured {
-            grid-column: span 1;
-          }
-        }
-      `}</style>
+      
     </div>
   );
 }

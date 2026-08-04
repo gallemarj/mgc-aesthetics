@@ -215,19 +215,19 @@ export default function HomePage() {
           </Reveal>
           <Reveal variant="fadeUp" delay={0.1}>
             <div className="faq-grid">
-              <div className="faq-item">
+              <div className="home-faq-item">
                 <h4>How do I book an appointment?</h4>
                 <p>You can book directly through our booking page or by contacting us via phone or the messenger chat on this site.</p>
               </div>
-              <div className="faq-item">
+              <div className="home-faq-item">
                 <h4>Do you offer consultations?</h4>
                 <p>Yes, every appointment includes a free consultation so we can understand your needs and recommend the best treatment.</p>
               </div>
-              <div className="faq-item">
+              <div className="home-faq-item">
                 <h4>What is your cancellation policy?</h4>
                 <p>We ask for at least 24 hours notice for cancellations or rescheduling to avoid any fees.</p>
               </div>
-              <div className="faq-item">
+              <div className="home-faq-item">
                 <h4>Are your treatments safe?</h4>
                 <p>Absolutely. All treatments are performed by licensed professionals using FDA-approved equipment and premium products.</p>
               </div>
@@ -272,251 +272,7 @@ export default function HomePage() {
         </section>
       </Reveal>
 
-      <style jsx>{`
-        .services-section {
-          background: var(--white);
-          padding: 30px 0 20px;
-        }
-
-        .services-section #services {
-          display: block;
-          scroll-margin-top: 140px;
-        }
-
-        .services-section .section-title {
-          margin-bottom: 8px;
-        }
-
-        .services-section .section-title__sub {
-          margin-bottom: 4px;
-        }
-
-        .services-section :global(.carousel) {
-          padding: 0;
-          margin-top: -60px;
-        }
-
-
-
-        .testimonial-section {
-          background: var(--off-white);
-          padding: 60px 0 0;
-          position: relative;
-          scroll-margin-top: 30px;
-        }
-
-        .testimonial-section .reviews-cta {
-          position: absolute;
-          bottom: 48px;
-          left: 0;
-          right: 0;
-          text-align: center;
-          z-index: 3;
-          pointer-events: none;
-        }
-
-        .testimonial-section .reviews-cta :global(.btn) {
-          pointer-events: auto;
-        }
-
-        .testimonial-section :global(.section-title) {
-          margin-bottom: 16px;
-        }
-
-        #gallery {
-          display: block;
-          scroll-margin-top: 120px;
-        }
-
-        #gallery .section-title {
-          margin-bottom: 16px;
-        }
-
-        .gallery-scroll {
-          display: flex;
-          gap: 8px;
-          height: 600px;
-          overflow: hidden;
-        }
-
-        .gallery-scroll__col {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          overflow: hidden;
-        }
-
-        .gallery-scroll__track {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          will-change: transform;
-        }
-
-        .gallery-scroll__col--up .gallery-scroll__track {
-          animation: scrollUp 20s linear infinite;
-        }
-
-        .gallery-scroll__col--down .gallery-scroll__track {
-          animation: scrollDown 20s linear infinite;
-        }
-
-        .gallery-scroll__item {
-          width: 100%;
-          aspect-ratio: 1;
-          background-size: cover;
-          background-position: center;
-          flex-shrink: 0;
-          border-radius: 8px;
-        }
-
-        @keyframes scrollUp {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-50%); }
-        }
-
-        @keyframes scrollDown {
-          0% { transform: translateY(-50%); }
-          100% { transform: translateY(0); }
-        }
-
-        .faq-section {
-          background: var(--off-white);
-          scroll-margin-top: 100px;
-        }
-
-        .faq-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 24px;
-        }
-
-        .faq-item {
-          padding: 32px 28px;
-          background: var(--white);
-          border: 1px solid var(--gray-200);
-          border-radius: 8px;
-        }
-
-        .faq-item h4 {
-          font-size: 16px;
-          font-weight: 600;
-          margin-bottom: 8px;
-        }
-
-        .faq-item p {
-          font-size: 14px;
-          line-height: 1.7;
-          color: var(--gray-600);
-        }
-
-        .about-section {
-          background: var(--off-white);
-          padding-top: 60px;
-          scroll-margin-top: 54px;
-        }
-
-        .about-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 80px;
-          align-items: center;
-        }
-
-        .about-grid__text p {
-          font-size: 15px;
-          line-height: 1.8;
-          margin-bottom: 16px;
-        }
-
-        .about-grid__image {
-          aspect-ratio: 3 / 4;
-          background-size: cover;
-          background-position: center;
-        }
-
-        .stats-section {
-          background: var(--white);
-        }
-
-        .stats-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 2px;
-          background: var(--gray-200);
-        }
-
-        .stats-grid > :global(*) {
-          background: var(--white);
-        }
-
-        .cta-section {
-          position: relative;
-          overflow: hidden;
-          border-top: 1px solid var(--gray-200);
-        }
-
-        .cta-section__bg {
-          position: absolute;
-          inset: -10%;
-          background-size: cover;
-          background-position: center;
-          background-attachment: fixed;
-          animation: slowZoom 25s ease-in-out infinite alternate;
-          z-index: 0;
-        }
-
-        .cta-section__overlay {
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.55);
-          z-index: 1;
-        }
-
-        @keyframes slowZoom {
-          0% { transform: scale(1); }
-          100% { transform: scale(1.1); }
-        }
-
-        @media (max-width: 768px) {
-          .services-section {
-            padding-top: 20px;
-          }
-
-          .services-section :global(.carousel) {
-            margin-top: 0;
-          }
-
-          .testimonial-section {
-            padding-top: 40px;
-          }
-
-          .gallery-scroll {
-            height: 400px;
-          }
-
-          .about-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
-          }
-
-          .stats-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .faq-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-
-        @media (max-width: 480px) {
-
-          .gallery-scroll {
-            height: 300px;
-          }
-        }
-      `}</style>
+      
     </div>
   );
 }

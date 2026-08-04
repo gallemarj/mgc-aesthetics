@@ -40,29 +40,7 @@ export default function CountUp({ end, suffix = "", duration = 2, label }) {
       </motion.span>
       <span className="countup__label">{label}</span>
 
-      <style jsx>{`
-        .countup {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          text-align: center;
-          padding: 40px 24px;
-          border: 1px solid var(--gray-200);
-          background: var(--white);
-        }
-
-        .countup__num {
-          font-size: 40px;
-          font-weight: 700;
-          letter-spacing: -0.03em;
-          color: var(--black);
-        }
-
-        .countup__label {
-          font-size: 14px;
-          color: var(--gray-500);
-        }
-      `}</style>
+      
     </div>
   );
 }

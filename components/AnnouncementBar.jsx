@@ -31,46 +31,7 @@ export default function AnnouncementBar() {
         ))}
       </div>
 
-      <style jsx>{`
-        .announcement {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1001;
-          height: 32px;
-          background: var(--black);
-          overflow: hidden;
-        }
-
-        .announcement__track {
-          position: relative;
-          width: 100%;
-          height: 100%;
-        }
-
-        .announcement__slide {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transition: opacity 0.6s ease;
-        }
-
-        .announcement__slide--active {
-          opacity: 1;
-        }
-
-        .announcement__slide p {
-          font-size: 11px;
-          font-weight: 400;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.7);
-        }
-      `}</style>
+      
     </div>
   );
 }

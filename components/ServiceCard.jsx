@@ -20,18 +20,7 @@ export default function ServiceCard({ service }) {
       className="card"
       style={{ backgroundImage: `url(${img})` }}
     >
-      <style jsx>{`
-        .card {
-          display: block;
-          width: 100%;
-          height: 100%;
-          background-size: cover;
-          background-position: center;
-          position: relative;
-          overflow: hidden;
-          cursor: default;
-        }
-      `}</style>
+      
     </div>
   );
 }

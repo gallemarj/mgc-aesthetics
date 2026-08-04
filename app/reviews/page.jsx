@@ -51,66 +51,7 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      <style jsx>{`
-        .page-hero {
-          background: var(--off-white);
-          padding: 160px 0 80px;
-          text-align: center;
-        }
-
-        .page-hero__sub {
-          font-size: 13px;
-          font-weight: 500;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: var(--gray-500);
-          margin-bottom: 12px;
-        }
-
-        .reviews-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
-        }
-
-        .review-card {
-          padding: 32px 28px;
-          background: var(--white);
-          border: 1px solid var(--gray-200);
-          border-radius: 12px;
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-        }
-
-        .review-card__stars {
-          display: flex;
-          gap: 4px;
-        }
-
-        .review-card__text {
-          font-size: 14px;
-          line-height: 1.7;
-          color: var(--gray-600);
-          font-style: italic;
-        }
-
-        .review-card__name {
-          font-size: 13px;
-          font-weight: 500;
-          color: var(--gray-500);
-        }
-
-        @media (max-width: 768px) {
-          .reviews-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .page-hero {
-            padding: 120px 0 60px;
-          }
-        }
-      `}</style>
+      
     </div>
   );
 }

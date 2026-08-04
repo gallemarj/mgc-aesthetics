@@ -38,57 +38,7 @@ export default function FaqPage() {
         </div>
       </section>
 
-      <style jsx>{`
-        .page-hero {
-          background: var(--off-white);
-          padding: 160px 0 80px;
-          text-align: center;
-        }
-
-        .page-hero__sub {
-          font-size: 13px;
-          font-weight: 500;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: var(--gray-500);
-          margin-bottom: 12px;
-        }
-
-        .faq-list {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 24px;
-        }
-
-        .faq-item {
-          padding: 32px 28px;
-          background: var(--white);
-          border: 1px solid var(--gray-200);
-          border-radius: 12px;
-        }
-
-        .faq-item h3 {
-          font-size: 16px;
-          font-weight: 600;
-          margin-bottom: 8px;
-        }
-
-        .faq-item p {
-          font-size: 14px;
-          line-height: 1.7;
-          color: var(--gray-600);
-        }
-
-        @media (max-width: 768px) {
-          .faq-list {
-            grid-template-columns: 1fr;
-          }
-
-          .page-hero {
-            padding: 120px 0 60px;
-          }
-        }
-      `}</style>
+      
     </div>
   );
 }

@@ -16,32 +16,7 @@ export default function NotFound() {
         </Link>
       </div>
 
-      <style jsx>{`
-        .not-found {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 80vh;
-          text-align: center;
-        }
-
-        .not-found__code {
-          font-size: 80px;
-          font-weight: 700;
-          letter-spacing: -0.04em;
-          color: var(--gray-200);
-          line-height: 1;
-          margin-bottom: 16px;
-        }
-
-        .not-found__title {
-          margin-bottom: 12px;
-        }
-
-        .not-found__desc {
-          color: var(--gray-500);
-        }
-      `}</style>
+      
     </div>
   );
 }
