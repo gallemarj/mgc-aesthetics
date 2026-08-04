@@ -160,7 +160,7 @@ export default function HomePage() {
       <section id="about" className="section about-section">
         <div className="container">
           <div className="about-grid">
-            <Reveal variant="slideLeft">
+            <Reveal variant="fadeUp">
               <div className="about-grid__text">
                 <SectionTitle subtitle="Our story" title="Excellence in aesthetics & wellness" align="left" />
                 <p>
@@ -179,7 +179,7 @@ export default function HomePage() {
                 </p>
               </div>
             </Reveal>
-            <Reveal variant="slideRight" delay={0.15}>
+            <Reveal variant="fadeUp" delay={0.15}>
               <div
                 className="about-grid__image"
                 style={{
