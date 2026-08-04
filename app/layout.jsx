@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MessengerChat from "@/components/MessengerChat";
 import AnnouncementBar from "@/components/AnnouncementBar";
+import SplashScreen from "@/components/SplashScreen";
 
 export default function RootLayout({ children }) {
   return (
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <SplashScreen />
         <AnnouncementBar />
         <Header />
         <main>{children}</main>
