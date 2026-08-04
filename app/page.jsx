@@ -8,6 +8,7 @@ import Reveal from "@/components/Reveal";
 import Link from "next/link";
 import CountUp from "@/components/CountUp";
 import { services } from "@/lib/services";
+import Image from "next/image";
 
 const stars = Array.from({ length: 5 }, (_, i) => i);
 
@@ -132,21 +133,27 @@ export default function HomePage() {
           <div className="gallery-scroll__col gallery-scroll__col--up">
             <div className="gallery-scroll__track">
               {galleryImages.filter((_, i) => i % 3 === 0).concat(galleryImages.filter((_, i) => i % 3 === 0)).map((url, j) => (
-                <div key={j} className="gallery-scroll__item" style={{ backgroundImage: `url(${url})` }} />
+                <div key={j} className="gallery-scroll__item">
+                  <Image src={url} alt="MGC Aesthetics gallery" fill sizes="33vw" loading="lazy" />
+                </div>
               ))}
             </div>
           </div>
           <div className="gallery-scroll__col gallery-scroll__col--down">
             <div className="gallery-scroll__track">
               {galleryImages.filter((_, i) => i % 3 === 1).concat(galleryImages.filter((_, i) => i % 3 === 1)).map((url, j) => (
-                <div key={j} className="gallery-scroll__item" style={{ backgroundImage: `url(${url})` }} />
+                <div key={j} className="gallery-scroll__item">
+                  <Image src={url} alt="MGC Aesthetics gallery" fill sizes="33vw" loading="lazy" />
+                </div>
               ))}
             </div>
           </div>
           <div className="gallery-scroll__col gallery-scroll__col--up">
             <div className="gallery-scroll__track">
               {galleryImages.filter((_, i) => i % 3 === 2).concat(galleryImages.filter((_, i) => i % 3 === 2)).map((url, j) => (
-                <div key={j} className="gallery-scroll__item" style={{ backgroundImage: `url(${url})` }} />
+                <div key={j} className="gallery-scroll__item">
+                  <Image src={url} alt="MGC Aesthetics gallery" fill sizes="33vw" loading="lazy" />
+                </div>
               ))}
             </div>
           </div>
@@ -180,13 +187,15 @@ export default function HomePage() {
               </div>
             </Reveal>
             <Reveal variant="fadeUp" delay={0.15}>
-              <div
-                className="about-grid__image"
-                style={{
-                  backgroundImage:
-                    "url(https://images.unsplash.com/photo-1559599101-f09722fb4948?w=800&q=80)",
-                }}
-              />
+              <div className="about-grid__image">
+                <Image
+                  src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=800&q=80"
+                  alt="About MGC Aesthetics"
+                  fill
+                  sizes="50vw"
+                  loading="lazy"
+                />
+              </div>
             </Reveal>
           </div>
         </div>
@@ -243,13 +252,15 @@ export default function HomePage() {
 
       <Reveal variant="fadeUp">
         <section className="section cta-section">
-          <div
-            className="cta-section__bg"
-            style={{
-              backgroundImage:
-                "url(https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1600&q=80)",
-            }}
-          />
+          <div className="cta-section__bg">
+            <Image
+              src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1600&q=80"
+              alt=""
+              fill
+              sizes="100vw"
+              loading="lazy"
+            />
+          </div>
           <div className="cta-section__overlay" />
           <div className="container" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
             <h2 style={{ marginBottom: 16, color: "var(--white)" }}>

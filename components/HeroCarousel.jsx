@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const slides = [
   {
@@ -74,7 +75,7 @@ export default function HeroCarousel() {
               className={`slide ${active ? "slide--active" : ""}`}
               style={{ transform: tf, zIndex: active ? 3 : 1, opacity: active ? 1 : 0.3 }}
             >
-              <div className="slide__img" style={{ backgroundImage: `url(${s.url})` }} />
+              <Image src={s.url} alt={s.title} fill sizes="100vw" priority={active} className="slide__img" />
               <div className="slide__overlay" />
               {active && <p className="slide__label">{s.title}</p>}
             </a>

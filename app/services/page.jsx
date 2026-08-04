@@ -4,6 +4,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import SectionTitle from "@/components/SectionTitle";
 import { services } from "@/lib/services";
+import Image from "next/image";
 
 const images = {
   "eyebrow-tattoo": "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=800&q=80",
@@ -33,10 +34,15 @@ export default function ServicesPage() {
             {services.map((service, i) => (
               <Reveal key={service.slug} delay={i * 0.06}>
                 <div className="service-card">
-                  <div
-                    className="service-card__img"
-                    style={{ backgroundImage: `url(${images[service.slug]})` }}
-                  />
+                  <div className="service-card__img">
+                    <Image
+                      src={images[service.slug]}
+                      alt={service.title}
+                      fill
+                      sizes="600px"
+                      loading="lazy"
+                    />
+                  </div>
                   <div className="service-card__body">
                     <h3>{service.title}</h3>
                     <p>{service.shortDesc}</p>

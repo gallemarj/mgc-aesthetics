@@ -3,6 +3,7 @@
 import HeroSection from "@/components/HeroSection";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
+import Image from "next/image";
 
 export default function ContactPage() {
   return (
@@ -82,13 +83,14 @@ export default function ContactPage() {
       </section>
 
       <section className="section" style={{ padding: 0 }}>
-        <div
-          className="map-placeholder"
-          style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1600&q=80)",
-          }}
-        >
+        <div className="map-placeholder">
+          <Image
+            src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1600&q=80"
+            alt=""
+            fill
+            sizes="100vw"
+            loading="lazy"
+          />
           <div className="map-placeholder__overlay" />
           <p style={{ position: "relative", zIndex: 1 }}>
             Google Maps embed will go here

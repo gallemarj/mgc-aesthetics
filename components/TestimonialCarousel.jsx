@@ -7,12 +7,15 @@ const stars = Array.from({ length: 5 }, (_, i) => i);
 export default function TestimonialCarousel({ testimonials }) {
   const stageRef = useRef(null);
   const angleRef = useRef(0);
-  const rafRef = useRef(null);
   const count = testimonials.length;
 
   useEffect(() => {
     let start = null;
+    let running = false;
+    let rafId = null;
+
     function tick(timestamp) {
+      if (!running) return;
       if (!start) start = timestamp;
       const elapsed = (timestamp - start) / 1000;
       angleRef.current = (elapsed * 3) % 360;
@@ -30,11 +33,50 @@ export default function TestimonialCarousel({ testimonials }) {
         }
       }
 
-      rafRef.current = requestAnimationFrame(tick);
+      rafId = requestAnimationFrame(tick);
     }
 
-    rafRef.current = requestAnimationFrame(tick);
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+    function startLoop() {
+      if (running) return;
+      running = true;
+      start = null;
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function stopLoop() {
+      running = false;
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && document.visibilityState === "visible") {
+          startLoop();
+        } else {
+          stopLoop();
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (stageRef.current) observer.observe(stageRef.current);
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") {
+        startLoop();
+      } else {
+        stopLoop();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
+    startLoop();
+
+    return () => {
+      stopLoop();
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, [count]);
 
   return (

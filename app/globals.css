@@ -24,8 +24,8 @@
   --glass-border: rgba(255, 255, 255, 0.12);
   --glass-blur: 20px;
 
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    sans-serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
 
   --max-width: 1200px;
   --gutter: 24px;
@@ -327,6 +327,11 @@ label {
     --section-padding: 60px 0;
     --gutter: 16px;
   }
+
+  .section-with-bg::before,
+  .cta-section__bg {
+    background-attachment: scroll;
+  }
 }
 
 
@@ -596,6 +601,7 @@ label {
         .grid__image {
           width: 100%;
           height: 100%;
+          position: relative;
           background-size: cover;
           background-position: center;
           transition: transform 0.6s ease;
@@ -747,6 +753,8 @@ label {
         .gallery-scroll__item {
           width: 100%;
           aspect-ratio: 1;
+          position: relative;
+          overflow: hidden;
           background-size: cover;
           background-position: center;
           flex-shrink: 0;
@@ -813,6 +821,7 @@ label {
         }
 
         .about-grid__image {
+          position: relative;
           aspect-ratio: 3 / 4;
           background-size: cover;
           background-position: center;
@@ -982,6 +991,7 @@ label {
         }
 
         .service-card__img {
+          position: relative;
           height: 240px;
           background-size: cover;
           background-position: center;

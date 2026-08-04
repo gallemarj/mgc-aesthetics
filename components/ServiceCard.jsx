@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const images = {
   "eyebrow-tattoo": "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=800&q=80",
   "lip-tattoo": "https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?w=800&q=80",
@@ -16,11 +18,8 @@ export default function ServiceCard({ service }) {
   const img = images[service.slug] || images.facial;
 
   return (
-    <div
-      className="card"
-      style={{ backgroundImage: `url(${img})` }}
-    >
-      
+    <div className="card">
+      <Image src={img} alt={service.title} fill sizes="480px" loading="lazy" />
     </div>
   );
 }

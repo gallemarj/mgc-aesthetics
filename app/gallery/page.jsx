@@ -1,6 +1,7 @@
 "use client";
 
 import Reveal from "@/components/Reveal";
+import Image from "next/image";
 
 const galleryImages = [
   "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80",
@@ -37,7 +38,9 @@ export default function GalleryPage() {
             {galleryImages.map((url, i) => (
               <Reveal key={i} variant="scaleUp" delay={(i % 4) * 0.05}>
                 <div className={`grid__item ${i % 5 === 0 ? "grid__item--featured" : ""}`}>
-                  <div className="grid__image" style={{ backgroundImage: `url(${url})` }} />
+                  <div className="grid__image">
+                    <Image src={url} alt="Gallery image" fill sizes="50vw" loading="lazy" />
+                  </div>
                 </div>
               </Reveal>
             ))}

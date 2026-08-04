@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const heroImages = {
   default:
@@ -29,10 +30,9 @@ export default function HeroSection({
 
   return (
     <section className={`inner-hero inner-hero--${variant}`}>
-      <div
-        className="inner-hero__bg"
-        style={{ backgroundImage: `url(${imgUrl})` }}
-      />
+      <div className="inner-hero__bg">
+        <Image src={imgUrl} alt={title} fill sizes="100vw" priority />
+      </div>
       <div className="inner-hero__overlay" />
       <div className="inner-hero__content container">
         <p className="inner-hero__subtitle">{subtitle}</p>
