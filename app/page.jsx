@@ -8,6 +8,7 @@ import Reveal from "@/components/Reveal";
 import Link from "next/link";
 import CountUp from "@/components/CountUp";
 import LocationSection from "@/components/LocationSection";
+import ReelsSection from "@/components/ReelsSection";
 import { services } from "@/lib/services";
 import { galleryImages } from "@/lib/gallery";
 import Image from "next/image";
@@ -153,6 +154,7 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+      <ReelsSection id="reels" />
       <section id="about" className="section about-section">
         <div className="container">
           <div className="about-grid">

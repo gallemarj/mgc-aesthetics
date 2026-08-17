@@ -90,6 +90,7 @@ export default function Footer() {
             <ul className="footer__list">
               <li><Link href="/#about">About</Link></li>
               <li><Link href="/#gallery">Clients</Link></li>
+              <li><Link href="/#reels">Reels</Link></li>
               <li><Link href="/reviews">Reviews</Link></li>
               <li><Link href="/faq">FAQ</Link></li>
               <li><Link href="/#location">Location</Link></li>
