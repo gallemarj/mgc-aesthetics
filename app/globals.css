@@ -751,7 +751,7 @@ label {
         }
 
         .gallery-scroll__col--down .gallery-scroll__track {
-          animation: scrollDown 60s linear infinite;
+          animation: scrollDown 75s linear infinite;
         }
 
         .gallery-scroll__item {
