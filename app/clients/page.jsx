@@ -9,7 +9,8 @@ const PER_PAGE = 24;
 export default function ClientsPage() {
   const [page, setPage] = useState(1);
   const totalPages = Math.ceil(galleryImages.length / PER_PAGE);
-  const visible = galleryImages.slice(0, page * PER_PAGE);
+  const start = (page - 1) * PER_PAGE;
+  const visible = galleryImages.slice(start, start + PER_PAGE);
 
   return (
     <div className="page">
@@ -33,21 +34,25 @@ export default function ClientsPage() {
           </div>
 
           <div className="clients-pagination">
+            <div className="clients-pagination__buttons">
+              <button
+                className="btn btn--outline"
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={page === 1}
+              >
+                Previous
+              </button>
+              <button
+                className="btn btn--outline"
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                disabled={page === totalPages}
+              >
+                Next
+              </button>
+            </div>
             <p className="clients-pagination__info">
               Page {page} of {totalPages}
             </p>
-            {page < totalPages ? (
-              <button
-                className="btn btn--outline"
-                onClick={() => setPage((p) => p + 1)}
-              >
-                Show more
-              </button>
-            ) : (
-              <p className="clients-pagination__done">
-                All {galleryImages.length} clients shown
-              </p>
-            )}
           </div>
         </div>
       </section>

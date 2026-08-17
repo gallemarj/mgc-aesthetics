@@ -623,6 +623,16 @@ label {
           margin-top: 48px;
         }
 
+        .clients-pagination__buttons {
+          display: flex;
+          gap: 12px;
+        }
+
+        .clients-pagination__buttons .btn:disabled {
+          opacity: 0.4;
+          cursor: not-allowed;
+        }
+
         .clients-pagination__info,
         .clients-pagination__done {
           font-size: 13px;
