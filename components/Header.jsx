@@ -11,6 +11,7 @@ const links = [
   { href: "/#gallery", label: "Clients" },
   { href: "/#about", label: "About" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/#location", label: "Location" },
   { href: "/contact", label: "Contact" },
 ];
 

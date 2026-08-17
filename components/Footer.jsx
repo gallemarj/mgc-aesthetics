@@ -92,6 +92,7 @@ export default function Footer() {
               <li><Link href="/#gallery">Clients</Link></li>
               <li><Link href="/reviews">Reviews</Link></li>
               <li><Link href="/faq">FAQ</Link></li>
+              <li><Link href="/#location">Location</Link></li>
               <li><Link href="/booking">Book Now</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
