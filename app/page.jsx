@@ -110,7 +110,7 @@ export default function HomePage() {
       <section style={{ padding: "60px 0 0", background: "var(--white)", position: "relative", zIndex: 2, marginTop: -30 }}>
         <div className="container">
           <Reveal>
-            <SectionTitle subtitle="Our work" title="Gallery" />
+            <SectionTitle subtitle="Our work" title="Clients" />
           </Reveal>
         </div>
       </section>
@@ -147,8 +147,8 @@ export default function HomePage() {
           </div>
         </div>
         <div style={{ textAlign: "center", padding: "40px 0 40px" }}>
-          <Link href="/gallery" className="btn btn--outline">
-            See all gallery
+          <Link href="/clients" className="btn btn--outline">
+            See all clients
           </Link>
         </div>
       </section>

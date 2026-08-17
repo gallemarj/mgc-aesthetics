@@ -89,7 +89,7 @@ export default function Footer() {
             <h4 className="footer__heading">Quick Links</h4>
             <ul className="footer__list">
               <li><Link href="/#about">About</Link></li>
-              <li><Link href="/#gallery">Gallery</Link></li>
+              <li><Link href="/#gallery">Clients</Link></li>
               <li><Link href="/reviews">Reviews</Link></li>
               <li><Link href="/faq">FAQ</Link></li>
               <li><Link href="/booking">Book Now</Link></li>
