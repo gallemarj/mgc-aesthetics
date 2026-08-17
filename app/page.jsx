@@ -127,7 +127,7 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <div className="gallery-scroll__col gallery-scroll__col--up">
+          <div className="gallery-scroll__col gallery-scroll__col--down">
             <div className="gallery-scroll__track">
               {homeGallery.filter((_, i) => i % 3 === 1).concat(homeGallery.filter((_, i) => i % 3 === 1)).map((url, j) => (
                 <div key={j} className="gallery-scroll__item">
