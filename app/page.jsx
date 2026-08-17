@@ -8,6 +8,7 @@ import Reveal from "@/components/Reveal";
 import Link from "next/link";
 import CountUp from "@/components/CountUp";
 import { services } from "@/lib/services";
+import { galleryImages } from "@/lib/gallery";
 import Image from "next/image";
 
 const stars = Array.from({ length: 5 }, (_, i) => i);
@@ -65,21 +66,8 @@ const testimonials = [
   },
 ];
 
-const galleryImages = [
-  "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80",
-  "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80",
-  "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&q=80",
-  "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80",
-  "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&q=80",
-  "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80",
-  "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=600&q=80",
-  "https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?w=600&q=80",
-  "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80",
-  "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=600&q=80",
-  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80",
-];
-
 export default function HomePage() {
+  const homeGallery = galleryImages.slice(0, 30);
   return (
     <div className="page">
       <section id="home"><HeroCarousel /></section>
@@ -132,7 +120,7 @@ export default function HomePage() {
         <div className="gallery-scroll">
           <div className="gallery-scroll__col gallery-scroll__col--up">
             <div className="gallery-scroll__track">
-              {galleryImages.filter((_, i) => i % 3 === 0).concat(galleryImages.filter((_, i) => i % 3 === 0)).map((url, j) => (
+              {homeGallery.filter((_, i) => i % 3 === 0).concat(homeGallery.filter((_, i) => i % 3 === 0)).map((url, j) => (
                 <div key={j} className="gallery-scroll__item">
                   <Image src={url} alt="MGC Aesthetics gallery" fill sizes="33vw" loading="lazy" />
                 </div>
@@ -141,7 +129,7 @@ export default function HomePage() {
           </div>
           <div className="gallery-scroll__col gallery-scroll__col--down">
             <div className="gallery-scroll__track">
-              {galleryImages.filter((_, i) => i % 3 === 1).concat(galleryImages.filter((_, i) => i % 3 === 1)).map((url, j) => (
+              {homeGallery.filter((_, i) => i % 3 === 1).concat(homeGallery.filter((_, i) => i % 3 === 1)).map((url, j) => (
                 <div key={j} className="gallery-scroll__item">
                   <Image src={url} alt="MGC Aesthetics gallery" fill sizes="33vw" loading="lazy" />
                 </div>
@@ -150,7 +138,7 @@ export default function HomePage() {
           </div>
           <div className="gallery-scroll__col gallery-scroll__col--up">
             <div className="gallery-scroll__track">
-              {galleryImages.filter((_, i) => i % 3 === 2).concat(galleryImages.filter((_, i) => i % 3 === 2)).map((url, j) => (
+              {homeGallery.filter((_, i) => i % 3 === 2).concat(homeGallery.filter((_, i) => i % 3 === 2)).map((url, j) => (
                 <div key={j} className="gallery-scroll__item">
                   <Image src={url} alt="MGC Aesthetics gallery" fill sizes="33vw" loading="lazy" />
                 </div>
@@ -159,9 +147,9 @@ export default function HomePage() {
           </div>
         </div>
         <div style={{ textAlign: "center", padding: "40px 0 40px" }}>
-          <button className="btn btn--outline" disabled>
+          <Link href="/gallery" className="btn btn--outline">
             See all gallery
-          </button>
+          </Link>
         </div>
       </section>
       <section id="about" className="section about-section">
