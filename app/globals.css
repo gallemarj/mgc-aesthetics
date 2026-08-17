@@ -607,6 +607,10 @@ label {
           transition: transform 0.6s ease;
         }
 
+        .grid__image img {
+          object-fit: cover;
+        }
+
         .grid__item:hover .grid__image {
           transform: scale(1.05);
         }
@@ -743,22 +747,26 @@ label {
         }
 
         .gallery-scroll__col--up .gallery-scroll__track {
-          animation: scrollUp 20s linear infinite;
+          animation: scrollUp 45s linear infinite;
         }
 
         .gallery-scroll__col--down .gallery-scroll__track {
-          animation: scrollDown 20s linear infinite;
+          animation: scrollDown 45s linear infinite;
         }
 
         .gallery-scroll__item {
           width: 100%;
-          aspect-ratio: 1;
+          aspect-ratio: 3 / 4;
           position: relative;
           overflow: hidden;
           background-size: cover;
           background-position: center;
           flex-shrink: 0;
           border-radius: 8px;
+        }
+
+        .gallery-scroll__item img {
+          object-fit: cover;
         }
 
         @keyframes scrollUp {
@@ -825,6 +833,10 @@ label {
           aspect-ratio: 3 / 4;
           background-size: cover;
           background-position: center;
+        }
+
+        .about-grid__image img {
+          object-fit: cover;
         }
 
         .stats-section {
