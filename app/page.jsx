@@ -122,7 +122,7 @@ export default function HomePage() {
             <div className="gallery-scroll__track">
               {homeGallery.filter((_, i) => i % 3 === 0).concat(homeGallery.filter((_, i) => i % 3 === 0)).map((url, j) => (
                 <div key={j} className="gallery-scroll__item">
-                  <Image src={url} alt="MGC Aesthetics gallery" fill sizes="33vw" loading="lazy" />
+                  <Image src={url} alt="MGC Aesthetics clients" fill sizes="33vw" loading="lazy" />
                 </div>
               ))}
             </div>
@@ -131,7 +131,7 @@ export default function HomePage() {
             <div className="gallery-scroll__track">
               {homeGallery.filter((_, i) => i % 3 === 1).concat(homeGallery.filter((_, i) => i % 3 === 1)).map((url, j) => (
                 <div key={j} className="gallery-scroll__item">
-                  <Image src={url} alt="MGC Aesthetics gallery" fill sizes="33vw" loading="lazy" />
+                  <Image src={url} alt="MGC Aesthetics clients" fill sizes="33vw" loading="lazy" />
                 </div>
               ))}
             </div>
@@ -140,7 +140,7 @@ export default function HomePage() {
             <div className="gallery-scroll__track">
               {homeGallery.filter((_, i) => i % 3 === 2).concat(homeGallery.filter((_, i) => i % 3 === 2)).map((url, j) => (
                 <div key={j} className="gallery-scroll__item">
-                  <Image src={url} alt="MGC Aesthetics gallery" fill sizes="33vw" loading="lazy" />
+                  <Image src={url} alt="MGC Aesthetics clients" fill sizes="33vw" loading="lazy" />
                 </div>
               ))}
             </div>
