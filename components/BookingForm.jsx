@@ -61,7 +61,7 @@ export default function BookingForm() {
             id="phone"
             name="phone"
             required
-            placeholder="(555) 123-4567"
+            placeholder="09XX XXX XXXX"
           />
         </div>
       </div>

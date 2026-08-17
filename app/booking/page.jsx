@@ -32,7 +32,7 @@ export default function BookingPage() {
                 <div className="booking-contact">
                   <div>
                     <strong>Phone</strong>
-                    <p>(555) 123-4567</p>
+                    <p>0963-297-1024</p>
                   </div>
                   <div>
                     <strong>Email</strong>

@@ -32,11 +32,21 @@ export default function ContactPage() {
                 <div className="contact-details">
                   <div className="contact-detail">
                     <span className="contact-detail__label">Address</span>
-                    <span>123 Beauty Lane, City, State 12345</span>
+                    <span>
+                      A.V.Y Building, 2nd Floor, Magallanes Street, Poblacion
+                      Sur, Paniqui, Tarlac
+                    </span>
+                  </div>
+                  <div className="contact-detail">
+                    <span className="contact-detail__label">Landmark</span>
+                    <span>
+                      Beside P.O. Domingo Montessori School and Paniqui South
+                      Elementary School
+                    </span>
                   </div>
                   <div className="contact-detail">
                     <span className="contact-detail__label">Phone</span>
-                    <span>(555) 123-4567</span>
+                    <span>0963-297-1024</span>
                   </div>
                   <div className="contact-detail">
                     <span className="contact-detail__label">Email</span>
@@ -45,11 +55,9 @@ export default function ContactPage() {
                   <div className="contact-detail">
                     <span className="contact-detail__label">Hours</span>
                     <span>
-                      Mon–Fri: 9am – 7pm
+                      Mon: Closed
                       <br />
-                      Sat: 10am – 5pm
-                      <br />
-                      Sun: Closed
+                      Tue–Sun: 10:00 AM – 6:00 PM
                     </span>
                   </div>
                 </div>

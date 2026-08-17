@@ -100,10 +100,10 @@ export default function Footer() {
           <div className="footer__col">
             <h4 className="footer__heading">Contact</h4>
             <ul className="footer__list">
-              <li>123 Beauty Lane</li>
-              <li>City, State 12345</li>
-              <li>(555) 123-4567</li>
-              <li>hello@mgcaesthetics.com</li>
+              <li>A.V.Y Building, 2nd Floor</li>
+              <li>Magallanes Street, Poblacion Sur</li>
+              <li>Paniqui, Tarlac</li>
+              <li>0963-297-1024</li>
             </ul>
           </div>
         </div>
