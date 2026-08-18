@@ -21,7 +21,7 @@ export default function SplashScreen() {
     <div className={`splash ${fading ? "splash--fade" : ""}`}>
       <div className="splash__logo">
         <span className="splash__name">MGC Aesthetics</span>
-        <span className="splash__tag">Skincare &amp; Beauty</span>
+        <span className="splash__tag">Beauty &amp; Wellness</span>
       </div>
       
     </div>

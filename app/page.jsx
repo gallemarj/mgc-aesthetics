@@ -160,20 +160,14 @@ export default function HomePage() {
           <div className="about-grid">
             <Reveal variant="fadeUp">
               <div className="about-grid__text">
-                <SectionTitle subtitle="Our story" title="Excellence in aesthetics & wellness" align="left" />
+                <SectionTitle subtitle="Our mission" title="Excellence in aesthetics & wellness" align="left" />
                 <p>
-                  MGC Aesthetics was founded with a simple mission: to provide
-                  premium beauty and wellness services in a space that feels both
-                  professional and welcoming. Every treatment we offer is
-                  performed with precision, care, and an eye for the natural
-                  result.
-                </p>
-                <p>
-                  Our team of licensed professionals brings years of experience in
-                  permanent makeup, skincare, laser technology, and therapeutic
-                  body treatments. We stay current with the latest techniques and
-                  industry standards to ensure you receive the highest quality of
-                  care.
+                  Our mission is to provide safe, high-quality beauty and
+                  wellness services that enhance natural beauty while making
+                  every client feel confident, cared for, and valued. We are
+                  committed to ensuring that every peso our clients spend is
+                  matched with exceptional quality, professional care, and the
+                  service they truly deserve.
                 </p>
               </div>
             </Reveal>
