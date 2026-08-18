@@ -160,7 +160,7 @@ export default function HomePage() {
           <div className="about-grid">
             <Reveal variant="fadeUp">
               <div className="about-grid__text">
-                <SectionTitle subtitle="Our mission" title="Excellence in aesthetics & wellness" align="left" />
+                <h2 className="section__title">Our mission</h2>
                 <p>
                   Our mission is to provide safe, high-quality beauty and
                   wellness services that enhance natural beauty while making
