@@ -11,62 +11,10 @@ import LocationSection from "@/components/LocationSection";
 import ReelsSection from "@/components/ReelsSection";
 import { services } from "@/lib/services";
 import { galleryImages } from "@/lib/gallery";
+import { reviews } from "@/lib/reviews";
 import Image from "next/image";
 
 const stars = Array.from({ length: 5 }, (_, i) => i);
-
-const testimonials = [
-  {
-    name: "Sarah M.",
-    text: "Absolutely love my eyebrow tattoo! MGC made me feel so comfortable and the results are stunning.",
-    rating: 5,
-  },
-  {
-    name: "Jessica R.",
-    text: "The facial was incredible. My skin has never looked better. Highly recommend the laser treatment too!",
-    rating: 5,
-  },
-  {
-    name: "Amanda L.",
-    text: "Professional, clean, and welcoming space. The massage was exactly what I needed. Will be coming back monthly.",
-    rating: 5,
-  },
-  {
-    name: "Michelle T.",
-    text: "The lash extensions are gorgeous. So natural and last so long. Already booked my next session.",
-    rating: 5,
-  },
-  {
-    name: "Rachel K.",
-    text: "I was nervous about lip tattoo but the team walked me through everything. Result is beautiful and natural.",
-    rating: 5,
-  },
-  {
-    name: "Emily W.",
-    text: "Foot spa was pure bliss. The attention to detail and the relaxing atmosphere made my whole week.",
-    rating: 5,
-  },
-  {
-    name: "Lauren B.",
-    text: "Best facial I have ever had. My skin was glowing for days after. The products they use smell incredible.",
-    rating: 5,
-  },
-  {
-    name: "Stephanie C.",
-    text: "Hair removal treatment was quick and effective. So glad I found this place. The staff are incredibly professional.",
-    rating: 5,
-  },
-  {
-    name: "Nicole D.",
-    text: "Tattoo removal process has been smooth and well managed. Visible results after just a few sessions. Highly recommend.",
-    rating: 5,
-  },
-  {
-    name: "Hannah W.",
-    text: "Came in for a massage and left feeling like a new person. The ambiance and skill of the therapist were outstanding.",
-    rating: 5,
-  },
-];
 
 export default function HomePage() {
   const homeGallery = galleryImages.slice(0, 30);
@@ -100,7 +48,7 @@ export default function HomePage() {
               title="Trusted by hundreds"
             />
           </Reveal>
-          <TestimonialCarousel testimonials={testimonials} />
+          <TestimonialCarousel testimonials={reviews} />
           <div className="reviews-cta">
             <button className="btn btn--outline" disabled>
               See all reviews
