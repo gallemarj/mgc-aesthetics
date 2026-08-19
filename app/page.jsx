@@ -6,7 +6,6 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
-import CountUp from "@/components/CountUp";
 import LocationSection from "@/components/LocationSection";
 import ReelsSection from "@/components/ReelsSection";
 import { services } from "@/lib/services";
@@ -120,33 +119,17 @@ export default function HomePage() {
               </div>
             </Reveal>
             <Reveal variant="fadeUp" delay={0.15}>
-              <div className="about-grid__image">
+              <div className="about-grid__logo">
                 <Image
-                  src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=800&q=80"
-                  alt="About MGC Aesthetics"
-                  fill
-                  sizes="50vw"
-                  loading="lazy"
+                  src="/logo.png"
+                  alt="MGC Aesthetics logo"
+                  width={260}
+                  height={260}
+                  className="about-grid__logo-img"
                 />
               </div>
             </Reveal>
           </div>
-        </div>
-      </section>
-
-      <section className="section stats-section">
-        <div className="container">
-          <Reveal>
-            <SectionTitle subtitle="By the numbers" title="Trusted by hundreds" />
-          </Reveal>
-          <Reveal variant="fadeUp" delay={0.15}>
-            <div className="stats-grid">
-              <CountUp end={500} suffix="+" label="Happy clients" />
-              <CountUp end={9} label="Services offered" />
-              <CountUp end={5} suffix="+" label="Years experience" />
-              <CountUp end={100} suffix="%" label="Satisfaction" />
-            </div>
-          </Reveal>
         </div>
       </section>
 
@@ -183,6 +166,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <LocationSection id="location" />
+
       <Reveal variant="fadeUp">
         <section className="section cta-section">
           <div className="cta-section__bg">
@@ -215,8 +200,6 @@ export default function HomePage() {
           </div>
         </section>
       </Reveal>
-
-      <LocationSection id="location" />
 
       
     </div>

@@ -3,91 +3,131 @@
 import { useEffect, useRef, useState } from "react";
 import { reels } from "@/lib/reels";
 
-function ReelCard({ src, index, onOpen }) {
-  const cardRef = useRef(null);
+export default function ReelsSection({ id }) {
+  const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(false);
+  const stageRef = useRef(null);
   const videoRef = useRef(null);
+  const bgVideoRef = useRef(null);
 
   useEffect(() => {
-    const card = cardRef.current;
+    const stage = stageRef.current;
     const video = videoRef.current;
-    if (!card || !video) return;
+    const bgVideo = bgVideoRef.current;
+    if (!stage || !video || !bgVideo) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           video.play().catch(() => {});
+          bgVideo.play().catch(() => {});
         } else {
           video.pause();
+          bgVideo.pause();
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.3 }
     );
 
-    observer.observe(card);
+    observer.observe(stage);
     return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={cardRef}
-      className="reel-card"
-      onClick={() => onOpen(index)}
-      role="button"
-      tabIndex={0}
-      aria-label={`Play reel ${index + 1}`}
-    >
-      <video
-        ref={videoRef}
-        src={src}
-        muted
-        loop
-        playsInline
-        preload="metadata"
-      />
-      <span className="reel-card__play">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-          <path d="M8 5v14l11-7z" />
-        </svg>
-      </span>
-    </div>
-  );
-}
-
-export default function ReelsSection({ id }) {
-  const [openIndex, setOpenIndex] = useState(null);
+  }, [index]);
 
   useEffect(() => {
-    if (openIndex === null) return;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [openIndex]);
+    if (open) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+  }, [open]);
+
+  const next = () => setIndex((i) => (i + 1) % reels.length);
+  const prev = () => setIndex((i) => (i - 1 + reels.length) % reels.length);
 
   return (
     <section id={id} className="section reels-section">
-      <div className="container">
-        <p className="section__subtitle">A look inside</p>
-        <h2 className="section__title">Reels</h2>
-        <div className="reels-scroll">
-          {reels.map((src, i) => (
-            <ReelCard key={src} src={src} index={i} onOpen={setOpenIndex} />
-          ))}
-        </div>
+      <div className="reels-backdrop" aria-hidden="true">
+        <video
+          key={`backdrop-${index}`}
+          ref={bgVideoRef}
+          src={reels[index]}
+          muted
+          loop
+          playsInline
+          autoPlay
+          preload="metadata"
+          className="reels-backdrop__video"
+        />
+        <div className="reels-backdrop__overlay" />
       </div>
 
-      {openIndex !== null && (
-        <div className="reels-lightbox" onClick={() => setOpenIndex(null)}>
+      <div className="container reels-container">
+        <p className="section__subtitle">A look inside</p>
+        <h2 className="section__title">Reels</h2>
+
+          <div className="reels-player">
+            <div className="reels-player__frame">
+              <button
+                className="reels-btn reels-btn--prev"
+                onClick={prev}
+                aria-label="Previous reel"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <div
+                ref={stageRef}
+                className="reels-player__stage"
+                onClick={() => setOpen(true)}
+                role="button"
+                tabIndex={0}
+                aria-label="Play reel fullscreen"
+              >
+                <video
+                  key={reels[index]}
+                  ref={videoRef}
+                  src={reels[index]}
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                  preload="metadata"
+                  className="reels-player__video"
+                />
+              </div>
+              <button
+                className="reels-btn reels-btn--next"
+                onClick={next}
+                aria-label="Next reel"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="reels-player__controls">
+              <span className="reels-player__count">
+                {index + 1} / {reels.length}
+              </span>
+            </div>
+          </div>
+      </div>
+
+      {open && (
+        <div className="reels-lightbox" onClick={() => setOpen(false)}>
           <button
             className="reels-lightbox__close"
             aria-label="Close"
-            onClick={() => setOpenIndex(null)}
+            onClick={() => setOpen(false)}
           >
             ×
           </button>
           <video
             className="reels-lightbox__video"
-            src={reels[openIndex]}
+            src={reels[index]}
             autoPlay
             loop
             playsInline

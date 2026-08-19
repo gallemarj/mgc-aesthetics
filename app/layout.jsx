@@ -16,6 +16,10 @@ export default function RootLayout({ children }) {
     <html lang="en" className={inter.variable}>
       <head>
         <meta name="robots" content="noindex, nofollow" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
       </head>
       <body>
         <SplashScreen />

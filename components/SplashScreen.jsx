@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function SplashScreen() {
   const [visible, setVisible] = useState(true);
@@ -20,6 +21,13 @@ export default function SplashScreen() {
   return (
     <div className={`splash ${fading ? "splash--fade" : ""}`}>
       <div className="splash__logo">
+        <Image
+          src="/logo-sm.png"
+          alt="MGC Aesthetics logo"
+          width={120}
+          height={120}
+          className="splash__img"
+        />
         <span className="splash__name">MGC Aesthetics</span>
         <span className="splash__tag">Beauty &amp; Wellness</span>
       </div>

@@ -44,7 +44,11 @@ export default function Header() {
       {/* Transparent nav */}
       <nav className="nav-transparent">
         <div className="nav-transparent__inner container">
-          {isMobile && <Link href="/" className="nav-transparent__logo">MGC Aesthetics</Link>}
+          {isMobile && (
+            <Link href="/" className="nav-transparent__logo">
+              MGC Aesthetics
+            </Link>
+          )}
           <div className="nav-transparent__links">
             {links.map((link) => (
               <a
@@ -75,7 +79,9 @@ export default function Header() {
       {/* White nav */}
       <nav className={`nav-white ${scrolled ? "nav-white--show" : ""}`}>
         <div className="nav-white__inner container">
-          <Link href="/" className="nav-white__logo">MGC Aesthetics</Link>
+          <Link href="/" className="nav-white__logo">
+            MGC Aesthetics
+          </Link>
           <div className="nav-white__links">
             {links.map((link) => (
               <Link
