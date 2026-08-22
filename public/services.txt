@@ -1,0 +1,66 @@
+Service,Details,Price
+(I) SIGNATURE HEAD SPA,Immerse yourself in 45 minutes of pure bliss with a head and shoulder massage paired with hair treatments and deep conditioning. It's the perfect way to unwind after a busy day.,₱999
+
+(II) PREMIUM HEAD SPA + BACK MASSAGE,"Treat yourself to the ultimate relaxation with our rejuvenating premium head spa. Enjoy calming scalp and hair treatments, deep conditioning, fumigation, a steam eye treatment, a facial scrub, and a jelly mask, all followed by a soothing back massage. Let go of tension and feel your stress melt away, leaving you deeply relaxed and recharged.","₱1,499"
+
+(III) SIGNATURE HEAD SPA + FULL BODY MASSAGE + FOOT SPA,"Experience the ultimate relaxation package: a head spa, full-body massage, and soothing foot spa. This blissful trio is designed to refresh your body, calm your mind, and leave you feeling utterly rejuvenated from head to toe.","₱1,999"
+
+(IV) PREMIUM HEAD SPA + FULL BODY MASSAGE + FACIAL,"Indulge in the ultimate pampering session with a calming head spa, a full-body massage, and a rejuvenating facial. Refresh, renew, and revitalize your body and skin, leaving you glowing from the inside out!","₱2,499"
+
+MGC Aesthetics Services 
+Menu
+
+Facial Services
+Basic Facial 700
+Diamond Peel w/ PDT 1,000
+Hydra Cleanse Facial 1,200
+Galvanic Facial 1,200
+Mesofirm Facial 1,500
+Black Glow Facial 1,500
+Hydra Glow Facial 2,000
+MGC Signature Facial 2,500
+
+Face Treatments
+Magneto Face Lifting 1,000
+Red Blood Veins 1,000
+Eye-bag Reducer 1,200
+Melasma Treatment 1,500
+Acne Treatment 1,500
+Acne Scar Treatment 1,500
+BB Glow 1,500
+Hyperpigmentation Treatment 1,800
+
+Body Treatments (non-invasive procedures)
+RF Arm Tightening 800/per session
+RF Leg Tightening 800/per session
+Tummy Cavitation 1000/per session
+Stretch Mark Reducer 1000/per session
+
+Hair Removal Treatments
+Upper & Lower Lips Hair Removal 800/per session
+Underarm Hair Removal 800/per session
+Underarm Whitening 800/per session
+UA Combo 1500/per session
+Legs Hair Removal 1000/per session
+
+Laser Removal (...price starts)
+Body Tattoo Removal 600
+Eyebrow Tattoo Removal 1,500
+Mole Removal (raised) 1,500
+Mole Removal (flat) 1,000
+Warts Removal (face & neck) 1,500
+Plantar Warts Removal 1,000
+Syringoma 1,000
+Skintag 1,000
+Millia 700
+
+Wax Services (...price starts)
+Underarm 350
+Half Legs 800
+Full Legs 1,000
+
+Lash Services
+Lashlift w/ tint 450
+Classic Eyelash Extension 650
+Cat Eyelash Extension 800
+Volume Eyelash Extension 1,000

@@ -1,19 +1,16 @@
 "use client";
 
 import HeroCarousel from "@/components/HeroCarousel";
-import ServiceCarousel from "@/components/ServiceCarousel";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
 import LocationSection from "@/components/LocationSection";
 import ReelsSection from "@/components/ReelsSection";
-import { services } from "@/lib/services";
+import { featuredServices } from "@/lib/services";
 import { galleryImages } from "@/lib/gallery";
 import { reviews } from "@/lib/reviews";
 import Image from "next/image";
-
-const stars = Array.from({ length: 5 }, (_, i) => i);
 
 export default function HomePage() {
   const homeGallery = galleryImages.slice(0, 30);
@@ -21,7 +18,7 @@ export default function HomePage() {
     <div className="page">
       <section id="home"><HeroCarousel /></section>
 
-      <section className="section services-section">
+      <section id="services" className="section services-section">
         <div className="container">
           <Reveal>
             <SectionTitle
@@ -29,12 +26,36 @@ export default function HomePage() {
               title="Premium beauty & wellness services"
             />
           </Reveal>
-          <span id="services" />
-          <ServiceCarousel services={services} />
-          <div style={{ textAlign: "center", marginTop: 20 }}>
-            <button className="btn btn--outline" disabled>
-              See all services
-            </button>
+
+          <div className="svc-featured">
+            {featuredServices.map((service, i) => (
+              <Link
+                key={service.slug}
+                href="/services#signature-packages"
+                className="svc-featured__row"
+              >
+                <span className="svc-featured__num">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="svc-featured__info">
+                  <h3>{service.title}</h3>
+                  <p>{service.shortDesc}</p>
+                </div>
+                <span className="svc-featured__dots" />
+                <div className="svc-featured__meta">
+                  <span className="svc-featured__price">{service.price}</span>
+                  <span className="svc-featured__duration">
+                    {service.duration}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: 40 }}>
+            <Link href="/services" className="btn btn--outline">
+              Explore full menu
+            </Link>
           </div>
         </div>
       </section>
@@ -158,11 +179,6 @@ export default function HomePage() {
               </div>
             </div>
           </Reveal>
-          <div style={{ textAlign: "center", marginTop: 40 }}>
-            <button className="btn btn--outline" disabled>
-              See all FAQs
-            </button>
-          </div>
         </div>
       </section>
 
@@ -172,11 +188,12 @@ export default function HomePage() {
         <section className="section cta-section">
           <div className="cta-section__bg">
             <Image
-              src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1600&q=80"
+              src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=1600&q=80"
               alt=""
               fill
               sizes="100vw"
               loading="lazy"
+              className="cta-section__img"
             />
           </div>
           <div className="cta-section__overlay" />

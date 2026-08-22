@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 
 const announcements = [
-  "Book now and get 10% off your first service",
-  "Free consultation with every appointment",
-  "New clients welcome — special rates available",
+  "Welcome to MGC Aesthetics — premium beauty and wellness",
+  "Open Tuesday to Sunday, 10:00 AM – 6:00 PM",
+  "Visit us in Paniqui, Tarlac or message us on Messenger",
 ];
 
 export default function AnnouncementBar() {

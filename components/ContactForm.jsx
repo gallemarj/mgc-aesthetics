@@ -2,41 +2,42 @@
 
 import { useState } from "react";
 
+const CONTACT_EMAIL = "tristansamoy2@gmail.com";
+
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true);
+    const data = Object.fromEntries(new FormData(e.target).entries());
 
-    const form = new FormData(e.target);
-    const data = Object.fromEntries(form.entries());
+    const subject = `Contact Message: ${data.subject} from ${data.name}`;
+    const body = [
+      "Contact Message",
+      "",
+      `Name: ${data.name}`,
+      `Email: ${data.email}`,
+      `Subject: ${data.subject}`,
+      data.message ? `Message: ${data.message}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (res.ok) {
-        setSubmitted(true);
-      }
-    } catch {
-      // silent
-    } finally {
-      setLoading(false);
-    }
+    const url = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = url;
+    setSubmitted(true);
   }
 
   if (submitted) {
     return (
       <div className="success">
-        <h3>Message sent</h3>
-        <p>We&apos;ll get back to you as soon as possible.</p>
-
-        
+        <h3>Almost done!</h3>
+        <p>
+          Your email app should open with your message pre-filled. Just press{" "}
+          <strong>Send</strong> to send it to us.
+        </p>
       </div>
     );
   }
@@ -51,7 +52,7 @@ export default function ContactForm() {
             id="contact-name"
             name="name"
             required
-            placeholder="Jane Doe"
+            placeholder="Juan Dela Cruz"
           />
         </div>
         <div className="form__group">
@@ -61,7 +62,7 @@ export default function ContactForm() {
             id="contact-email"
             name="email"
             required
-            placeholder="jane@example.com"
+            placeholder="juan@example.com"
           />
         </div>
       </div>
@@ -91,13 +92,10 @@ export default function ContactForm() {
       <button
         type="submit"
         className="btn btn--primary"
-        disabled={loading}
         style={{ width: "100%", marginTop: 8 }}
       >
-        {loading ? "Sending..." : "Send Message"}
+        Send Message
       </button>
-
-      
     </form>
   );
 }

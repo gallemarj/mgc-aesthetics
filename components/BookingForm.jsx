@@ -2,41 +2,44 @@
 
 import { useState } from "react";
 
+const CONTACT_EMAIL = "tristansamoy2@gmail.com";
+
 export default function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true);
+    const data = Object.fromEntries(new FormData(e.target).entries());
 
-    const form = new FormData(e.target);
-    const data = Object.fromEntries(form.entries());
+    const subject = `Booking Request: ${data.service} from ${data.name}`;
+    const body = [
+      "Booking Request",
+      "",
+      `Name: ${data.name}`,
+      `Phone: ${data.phone}`,
+      `Email: ${data.email}`,
+      `Service: ${data.service}`,
+      `Preferred Date: ${data.date || "—"}`,
+      data.message ? `Message: ${data.message}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
 
-    try {
-      const res = await fetch("/api/booking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (res.ok) {
-        setSubmitted(true);
-      }
-    } catch {
-      // fallback silently
-    } finally {
-      setLoading(false);
-    }
+    const url = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = url;
+    setSubmitted(true);
   }
 
   if (submitted) {
     return (
       <div className="success">
-        <h3>Thank you</h3>
-        <p>Your booking request has been sent. We&apos;ll get back to you shortly.</p>
-
-        
+        <h3>Almost done!</h3>
+        <p>
+          Your email app should open with your booking details pre-filled. Just
+          press <strong>Send</strong> to send it to us.
+        </p>
       </div>
     );
   }
@@ -51,7 +54,7 @@ export default function BookingForm() {
             id="name"
             name="name"
             required
-            placeholder="Jane Doe"
+            placeholder="Juan Dela Cruz"
           />
         </div>
         <div className="form__group">
@@ -74,22 +77,24 @@ export default function BookingForm() {
             id="email"
             name="email"
             required
-            placeholder="jane@example.com"
+            placeholder="juan@example.com"
           />
         </div>
         <div className="form__group">
           <label htmlFor="service">Service</label>
           <select id="service" name="service" required>
             <option value="">Select a service</option>
-            <option value="Eyebrow Tattoo">Eyebrow Tattoo</option>
-            <option value="Lip Tattoo">Lip Tattoo</option>
-            <option value="Facial">Facial</option>
-            <option value="Laser">Laser</option>
-            <option value="Tattoo Removal">Tattoo Removal</option>
-            <option value="Foot Spa">Foot Spa</option>
-            <option value="Eyelash Extension">Eyelash Extension</option>
-            <option value="Massage">Massage</option>
-            <option value="Hair Removal">Hair Removal</option>
+            <option value="Signature Head Spa">Signature Head Spa (₱999)</option>
+            <option value="Premium Head Spa + Back Massage">Premium Head Spa + Back Massage (₱1,499)</option>
+            <option value="Signature Head Spa + Full Body Massage + Foot Spa">Signature Head Spa + Full Body Massage + Foot Spa (₱1,999)</option>
+            <option value="Premium Head Spa + Full Body Massage + Facial">Premium Head Spa + Full Body Massage + Facial (₱2,499)</option>
+            <option value="Facial Services">Facial Services</option>
+            <option value="Face Treatments">Face Treatments</option>
+            <option value="Body Treatments">Body Treatments</option>
+            <option value="Hair Removal Treatments">Hair Removal Treatments</option>
+            <option value="Laser Removal">Laser Removal</option>
+            <option value="Wax Services">Wax Services</option>
+            <option value="Lash Services">Lash Services</option>
           </select>
         </div>
       </div>
@@ -112,13 +117,10 @@ export default function BookingForm() {
       <button
         type="submit"
         className="btn btn--primary"
-        disabled={loading}
         style={{ width: "100%", marginTop: 8 }}
       >
-        {loading ? "Sending..." : "Send Booking Request"}
+        Send Booking Request
       </button>
-
-      
     </form>
   );
 }
