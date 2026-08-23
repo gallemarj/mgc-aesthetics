@@ -46,7 +46,7 @@ export default function ReelsSection({ id }) {
   const prev = () => setIndex((i) => (i - 1 + reels.length) % reels.length);
 
   return (
-    <section id={id} className="section reels-section">
+    <section className="section reels-section">
       <div className="reels-backdrop" aria-hidden="true">
         <video
           key={`backdrop-${index}`}
@@ -66,7 +66,7 @@ export default function ReelsSection({ id }) {
         <p className="section__subtitle">A look inside</p>
         <h2 className="section__title">Reels</h2>
 
-          <div className="reels-player">
+          <div className="reels-player" id={id}>
             <div className="reels-player__frame">
               <button
                 className="reels-btn reels-btn--prev"

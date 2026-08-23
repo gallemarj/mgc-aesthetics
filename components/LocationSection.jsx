@@ -13,7 +13,7 @@ export default function LocationSection({ id }) {
         <div className="find-grid">
           <div className="find-photo">
             <Image
-              src="/location.png"
+              src="/location.webp"
               alt="MGC Aesthetics building"
               fill
               sizes="50vw"

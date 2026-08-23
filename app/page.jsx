@@ -70,9 +70,9 @@ export default function HomePage() {
           </Reveal>
           <TestimonialCarousel testimonials={reviews} />
           <div className="reviews-cta">
-            <button className="btn btn--outline" disabled>
+            <Link href="/reviews" className="btn btn--outline">
               See all reviews
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -142,7 +142,7 @@ export default function HomePage() {
             <Reveal variant="fadeUp" delay={0.15}>
               <div className="about-grid__logo">
                 <Image
-                  src="/logo.png"
+                  src="/logo.webp"
                   alt="MGC Aesthetics logo"
                   width={260}
                   height={260}
@@ -188,7 +188,7 @@ export default function HomePage() {
         <section className="section cta-section">
           <div className="cta-section__bg">
             <Image
-              src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=1600&q=80"
+              src="/homepic/homepic1.avif"
               alt=""
               fill
               sizes="100vw"

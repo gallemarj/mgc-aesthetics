@@ -1,14 +1,102 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { allServices } from "@/lib/services";
 
 const CONTACT_EMAIL = "tristansamoy2@gmail.com";
 
+const groupedServices = allServices.reduce((acc, service) => {
+  (acc[service.category] = acc[service.category] || []).push(service);
+  return acc;
+}, {});
+
+function ServiceSelect({ selected, onSelect, onOpenChange }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const onDocClick = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+        onOpenChange(false);
+      }
+    };
+    document.addEventListener("mousedown", onDocClick);
+    return () => document.removeEventListener("mousedown", onDocClick);
+  }, [onOpenChange]);
+
+  function toggle() {
+    setOpen((o) => {
+      const next = !o;
+      onOpenChange(next);
+      return next;
+    });
+  }
+
+  function choose(item) {
+    onSelect(item);
+    setOpen(false);
+    onOpenChange(false);
+  }
+
+  return (
+    <div className="svc-select" ref={ref}>
+      <button
+        type="button"
+        className={`svc-select__trigger ${selected ? "svc-select__trigger--filled" : ""} ${open ? "svc-select__trigger--open" : ""}`}
+        onClick={toggle}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span>
+          {selected
+            ? `${selected.category} — ${selected.name} — ${selected.price}`
+            : "Select a service"}
+        </span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="svc-select__menu" role="listbox">
+          {Object.entries(groupedServices).map(([category, items]) => (
+            <div key={category} className="svc-select__group">
+              <div className="svc-select__group-label">{category}</div>
+              {items.map((item) => (
+                <button
+                  key={item.name}
+                  type="button"
+                  role="option"
+                  aria-selected={selected?.name === item.name}
+                  className="svc-select__option"
+                  onClick={() => choose(item)}
+                >
+                  <span>{item.name}</span>
+                  <span className="svc-select__option-price">{item.price}</span>
+                </button>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+  const [serviceError, setServiceError] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!selectedService) {
+      setServiceError(true);
+      return;
+    }
+
     const data = Object.fromEntries(new FormData(e.target).entries());
 
     const subject = `Booking Request: ${data.service} from ${data.name}`;
@@ -82,20 +170,26 @@ export default function BookingForm() {
         </div>
         <div className="form__group">
           <label htmlFor="service">Service</label>
-          <select id="service" name="service" required>
-            <option value="">Select a service</option>
-            <option value="Signature Head Spa">Signature Head Spa (₱999)</option>
-            <option value="Premium Head Spa + Back Massage">Premium Head Spa + Back Massage (₱1,499)</option>
-            <option value="Signature Head Spa + Full Body Massage + Foot Spa">Signature Head Spa + Full Body Massage + Foot Spa (₱1,999)</option>
-            <option value="Premium Head Spa + Full Body Massage + Facial">Premium Head Spa + Full Body Massage + Facial (₱2,499)</option>
-            <option value="Facial Services">Facial Services</option>
-            <option value="Face Treatments">Face Treatments</option>
-            <option value="Body Treatments">Body Treatments</option>
-            <option value="Hair Removal Treatments">Hair Removal Treatments</option>
-            <option value="Laser Removal">Laser Removal</option>
-            <option value="Wax Services">Wax Services</option>
-            <option value="Lash Services">Lash Services</option>
-          </select>
+          <ServiceSelect
+            selected={selectedService}
+            onSelect={(item) => {
+              setSelectedService(item);
+              setServiceError(false);
+            }}
+            onOpenChange={setMenuOpen}
+          />
+          {serviceError && !menuOpen && (
+            <p className="form__error">Please select a service.</p>
+          )}
+          <input
+            type="hidden"
+            name="service"
+            value={
+              selectedService
+                ? `${selectedService.name} — ${selectedService.price} (${selectedService.category})`
+                : ""
+            }
+          />
         </div>
       </div>
 

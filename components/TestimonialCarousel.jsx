@@ -12,8 +12,10 @@ export default function TestimonialCarousel({ testimonials }) {
   useEffect(() => {
     let start = null;
     let rafId = null;
+    let running = false;
 
     function tick(timestamp) {
+      if (!running) return;
       if (!start) start = timestamp;
       const elapsed = (timestamp - start) / 1000;
       angleRef.current = (elapsed * 3) % 360;
@@ -34,10 +36,31 @@ export default function TestimonialCarousel({ testimonials }) {
       rafId = requestAnimationFrame(tick);
     }
 
-    rafId = requestAnimationFrame(tick);
+    function startLoop() {
+      if (running) return;
+      running = true;
+      start = null;
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function stopLoop() {
+      running = false;
+      if (rafId) cancelAnimationFrame(rafId);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) startLoop();
+        else stopLoop();
+      },
+      { threshold: 0.05 }
+    );
+
+    if (stageRef.current) observer.observe(stageRef.current);
 
     return () => {
-      if (rafId) cancelAnimationFrame(rafId);
+      stopLoop();
+      observer.disconnect();
     };
   }, [count]);
 

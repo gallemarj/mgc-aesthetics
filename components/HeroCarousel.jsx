@@ -6,24 +6,19 @@ import Image from "next/image";
 
 const slides = [
   {
-    url: "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1600&q=80",
-    title: "Eyebrow Tattoo",
-    headline: "Perfect Brows,\nNaturally",
+    url: "/homepic/homepic1.avif",
+    title: "MGC Aesthetics",
+    headline: "GLOW",
   },
   {
-    url: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1600&q=80",
+    url: "/homepic/homepic2.avif",
     title: "Facial & Laser",
-    headline: "Reveal Your\nRadiance",
+    headline: "RELAX",
   },
   {
     url: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1600&q=80",
     title: "Massage & Spa",
-    headline: "Escape &\nUnwind",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=1600&q=80",
-    title: "Lip Tattoo & Lash",
-    headline: "Enhance Your\nNatural Beauty",
+    headline: "RENEW",
   },
 ];
 
@@ -51,36 +46,47 @@ export default function HeroCarousel() {
     return () => clearInterval(t);
   }, [next, resetKey]);
 
-  const idx = (offset) => (current + offset + total) % total;
-
   const variants = {
     enter: (d) => ({ y: d > 0 ? -300 : 300, opacity: 0 }),
     center: { y: 0, opacity: 1 },
     exit: (d) => ({ y: d > 0 ? 300 : -300, opacity: 0 }),
   };
 
+  const slideVariants = {
+    enter: (d) => ({ x: d > 0 ? "100%" : "-100%", scale: 0.96, opacity: 0 }),
+    center: { x: "0%", scale: 1, opacity: 1, zIndex: 2 },
+    exit: (d) => ({ x: d > 0 ? "-100%" : "100%", scale: 0.96, opacity: 0, zIndex: 1 }),
+  };
+
+  const activeSlide = slides[current];
+
   return (
     <section className="hero">
       <div className="hero__stage">
-        {[-1, 0, 1].map((offset) => {
-          const i = idx(offset);
-          const s = slides[i];
-          const active = offset === 0;
-          const tf = offset === -1 ? "translateX(-68%) scale(0.6)" : offset === 0 ? "translateX(0) scale(1)" : "translateX(68%) scale(0.6)";
-          return (
-            <a
-              key={i}
-              href={active ? "/#services" : undefined}
-              onClick={(e) => { if (!active) { e.preventDefault(); offset === -1 ? prev() : next(); } }}
-              className={`slide ${active ? "slide--active" : ""}`}
-              style={{ transform: tf, zIndex: active ? 3 : 1, opacity: active ? 1 : 0.3 }}
-            >
-              <Image src={s.url} alt={s.title} fill sizes="100vw" priority={active} className="slide__img" />
-              <div className="slide__overlay" />
-              {active && <p className="slide__label">{s.title}</p>}
-            </a>
-          );
-        })}
+        <AnimatePresence custom={dir} initial={false}>
+          <motion.a
+            key={current}
+            custom={dir}
+            href="/#services"
+            className="slide slide--active"
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 1, ease: [0.65, 0, 0.35, 1] }}
+          >
+            <Image
+              src={activeSlide.url}
+              alt={activeSlide.title}
+              fill
+              sizes="100vw"
+              priority
+              className="slide__img"
+            />
+            <div className="slide__overlay" />
+            <p className="slide__label">{activeSlide.title}</p>
+          </motion.a>
+        </AnimatePresence>
       </div>
 
       <div className="hero__text">
