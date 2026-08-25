@@ -98,7 +98,6 @@ export const metadata = {
     index: false,
     follow: false,
   },
-  themeColor: "#111111",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -107,6 +106,10 @@ export const metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
+};
+
+export const viewport = {
+  themeColor: "#111111",
 };
 
 const priceToNumber = (price) =>
