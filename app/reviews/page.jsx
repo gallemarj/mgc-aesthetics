@@ -1,7 +1,14 @@
-"use client";
-
 import Reveal from "@/components/Reveal";
 import { reviews } from "@/lib/reviews";
+
+export const metadata = {
+  title: "Client Reviews",
+  description:
+    "Read what clients say about MGC Aesthetics – head spa, facial, lash and beauty services in Paniqui, Tarlac.",
+  alternates: {
+    canonical: "/reviews",
+  },
+};
 
 const stars = Array.from({ length: 5 }, (_, i) => i);
 

@@ -1796,17 +1796,19 @@ label {
         .hero__text {
           position: absolute;
           z-index: 10;
-          top: 90px;
+          top: 150px;
           left: clamp(24px, 5vw, 80px);
         }
 
         .hero__eyebrow {
           font-size: 14px;
           font-weight: 500;
-          letter-spacing: 0.25em;
+          letter-spacing: 0.18em;
           text-transform: uppercase;
           color: var(--gray-400);
           margin-bottom: 14px;
+          max-width: 460px;
+          line-height: 1.5;
         }
 
         .hero__title-wrap {
@@ -1882,7 +1884,7 @@ label {
         @media (max-width: 768px) {
           .hero { height: 100vh; min-height: 500px; }
           .hero__stage { position: absolute; inset: 0; }
-          .hero__text { position: absolute; top: 110px; left: 24px; right: 24px; text-align: center; }
+          .hero__text { position: absolute; top: 135px; left: 24px; right: 24px; text-align: center; }
           .hero__title-wrap { height: clamp(4rem, 14vw, 6rem); width: 100%; max-width: none; }
           .hero__title { font-size: clamp(2rem, 8vw, 3rem); max-width: 100%; }
           .arrow--left { left: 4px; }

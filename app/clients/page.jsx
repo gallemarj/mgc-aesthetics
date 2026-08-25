@@ -6,6 +6,15 @@ import { galleryImages } from "@/lib/gallery";
 
 const PER_PAGE = 24;
 
+const clientAltTexts = [
+  "MGC Aesthetics client result in Paniqui, Tarlac",
+  "Before and after beauty treatment at MGC Aesthetics",
+  "MGC Aesthetics client – beauty and wellness in Paniqui Tarlac",
+  "Client transformation at MGC Aesthetics in Tarlac",
+  "MGC Aesthetics client photos in Paniqui, Tarlac",
+];
+const clientAlt = (i) => clientAltTexts[i % clientAltTexts.length];
+
 export default function ClientsPage() {
   const [page, setPage] = useState(1);
   const totalPages = Math.ceil(galleryImages.length / PER_PAGE);
@@ -24,10 +33,10 @@ export default function ClientsPage() {
       <section className="section">
         <div className="container">
           <div className="grid">
-            {visible.map((url) => (
+            {visible.map((url, i) => (
               <div key={url} className="grid__item">
                 <div className="grid__image">
-                  <Image src={url} alt="Client photo" fill sizes="33vw" loading="lazy" />
+                  <Image src={url} alt={clientAlt(i)} fill sizes="33vw" loading="lazy" />
                 </div>
               </div>
             ))}

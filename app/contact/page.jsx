@@ -1,9 +1,16 @@
-"use client";
-
 import HeroSection from "@/components/HeroSection";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import LocationSection from "@/components/LocationSection";
+
+export const metadata = {
+  title: "Contact Us",
+  description:
+    "Contact MGC Aesthetics in Paniqui, Tarlac. Visit us at A.V.Y Building, Magallanes Street, Poblacion Sur, or message us on Facebook.",
+  alternates: {
+    canonical: "/contact",
+  },
+};
 
 export default function ContactPage() {
   return (

@@ -7,17 +7,20 @@ import Image from "next/image";
 const slides = [
   {
     url: "/homepic/homepic1.avif",
-    title: "MGC Aesthetics",
+    title: "Head Spa",
+    alt: "Head spa hair wash treatment at MGC Aesthetics in Paniqui, Tarlac",
     headline: "GLOW",
   },
   {
     url: "/homepic/homepic2.avif",
-    title: "Facial & Laser",
+    title: "Magneto RF",
+    alt: "Magneto RF face lifting treatment at MGC Aesthetics in Paniqui, Tarlac",
     headline: "RELAX",
   },
   {
     url: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1600&q=80",
     title: "Massage & Spa",
+    alt: "Relaxing massage and spa treatment at MGC Aesthetics in Paniqui, Tarlac",
     headline: "RENEW",
   },
 ];
@@ -77,7 +80,7 @@ export default function HeroCarousel() {
           >
             <Image
               src={activeSlide.url}
-              alt={activeSlide.title}
+              alt={activeSlide.alt || activeSlide.title}
               fill
               sizes="100vw"
               priority
@@ -90,7 +93,7 @@ export default function HeroCarousel() {
       </div>
 
       <div className="hero__text">
-        <p className="hero__eyebrow">MGC Aesthetics</p>
+        <p className="hero__eyebrow">First Japanese Head Spa in Paniqui, Tarlac</p>
         <div className="hero__title-wrap">
           <AnimatePresence mode="popLayout" custom={dir}>
             <motion.h1

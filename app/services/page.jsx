@@ -1,8 +1,15 @@
-"use client";
-
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { featuredServices, serviceCategories } from "@/lib/services";
+
+export const metadata = {
+  title: "Services & Price List",
+  description:
+    "Explore MGC Aesthetics services and prices – head spa packages, facials, face treatments, body treatments, hair removal, laser removal, waxing and lash services in Paniqui, Tarlac.",
+  alternates: {
+    canonical: "/services",
+  },
+};
 
 function slugify(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -22,8 +29,12 @@ export default function ServicesPage() {
         <div className="container">
           <Reveal>
             <div className="services-head">
-              <p className="section__subtitle">Signature packages</p>
-              <h2 className="section__title">Head spa & relaxation packages</h2>
+              <p className="section__subtitle">
+                The first Japanese head spa in Paniqui, Tarlac
+              </p>
+              <h2 className="section__title">
+                Head spa & relaxation packages
+              </h2>
             </div>
           </Reveal>
 

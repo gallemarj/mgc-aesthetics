@@ -1,5 +1,3 @@
-"use client";
-
 import HeroCarousel from "@/components/HeroCarousel";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import SectionTitle from "@/components/SectionTitle";
@@ -11,6 +9,26 @@ import { featuredServices } from "@/lib/services";
 import { galleryImages } from "@/lib/gallery";
 import { reviews } from "@/lib/reviews";
 import Image from "next/image";
+
+export const metadata = {
+  title: {
+    absolute: "MGC Aesthetics – First Japanese Head Spa in Paniqui, Tarlac",
+  },
+  description:
+    "The first Japanese head spa in Paniqui, Tarlac. Premium head spa packages, facials, massages, waxing, lash extensions and laser services. Book your appointment online.",
+  alternates: {
+    canonical: "/",
+  },
+};
+
+const clientAltTexts = [
+  "MGC Aesthetics client result in Paniqui, Tarlac",
+  "Before and after beauty treatment at MGC Aesthetics",
+  "MGC Aesthetics client – beauty and wellness in Paniqui Tarlac",
+  "Client transformation at MGC Aesthetics in Tarlac",
+  "MGC Aesthetics client photos in Paniqui, Tarlac",
+];
+const galleryAlt = (i) => clientAltTexts[i % clientAltTexts.length];
 
 export default function HomePage() {
   const homeGallery = galleryImages.slice(0, 30);
@@ -92,7 +110,7 @@ export default function HomePage() {
             <div className="gallery-scroll__track">
               {homeGallery.filter((_, i) => i % 3 === 0).concat(homeGallery.filter((_, i) => i % 3 === 0)).map((url, j) => (
                 <div key={j} className="gallery-scroll__item">
-                  <Image src={url} alt="MGC Aesthetics clients" fill sizes="33vw" loading="lazy" />
+                  <Image src={url} alt={galleryAlt(j)} fill sizes="33vw" loading="lazy" />
                 </div>
               ))}
             </div>
@@ -101,7 +119,7 @@ export default function HomePage() {
             <div className="gallery-scroll__track">
               {homeGallery.filter((_, i) => i % 3 === 1).concat(homeGallery.filter((_, i) => i % 3 === 1)).map((url, j) => (
                 <div key={j} className="gallery-scroll__item">
-                  <Image src={url} alt="MGC Aesthetics clients" fill sizes="33vw" loading="lazy" />
+                  <Image src={url} alt={galleryAlt(j + 1)} fill sizes="33vw" loading="lazy" />
                 </div>
               ))}
             </div>
@@ -110,7 +128,7 @@ export default function HomePage() {
             <div className="gallery-scroll__track">
               {homeGallery.filter((_, i) => i % 3 === 2).concat(homeGallery.filter((_, i) => i % 3 === 2)).map((url, j) => (
                 <div key={j} className="gallery-scroll__item">
-                  <Image src={url} alt="MGC Aesthetics clients" fill sizes="33vw" loading="lazy" />
+                  <Image src={url} alt={galleryAlt(j + 2)} fill sizes="33vw" loading="lazy" />
                 </div>
               ))}
             </div>

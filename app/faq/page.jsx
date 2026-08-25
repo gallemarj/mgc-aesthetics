@@ -1,6 +1,13 @@
-"use client";
-
 import Reveal from "@/components/Reveal";
+
+export const metadata = {
+  title: "FAQ",
+  description:
+    "Frequently asked questions about booking, consultations, cancellations and treatments at MGC Aesthetics in Paniqui, Tarlac.",
+  alternates: {
+    canonical: "/faq",
+  },
+};
 
 const faqs = [
   { q: "How do I book an appointment?", a: "You can book directly through our booking page or by contacting us via phone or the messenger chat on this site." },

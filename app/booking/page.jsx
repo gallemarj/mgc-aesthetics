@@ -1,8 +1,15 @@
-"use client";
-
 import HeroSection from "@/components/HeroSection";
 import BookingForm from "@/components/BookingForm";
 import Reveal from "@/components/Reveal";
+
+export const metadata = {
+  title: "Book an Appointment",
+  description:
+    "Book your appointment at MGC Aesthetics in Paniqui, Tarlac. Choose your service and send your booking request.",
+  alternates: {
+    canonical: "/booking",
+  },
+};
 
 export default function BookingPage() {
   return (

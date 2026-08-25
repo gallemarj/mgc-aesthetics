@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const CONTACT_EMAIL = "tristansamoy2@gmail.com";
+const MESSENGER_URL = "https://m.me/gtbymgc";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -11,9 +11,8 @@ export default function ContactForm() {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
 
-    const subject = `Contact Message: ${data.subject} from ${data.name}`;
     const body = [
-      "Contact Message",
+      "New Contact Message",
       "",
       `Name: ${data.name}`,
       `Email: ${data.email}`,
@@ -23,10 +22,8 @@ export default function ContactForm() {
       .filter(Boolean)
       .join("\n");
 
-    const url = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = url;
+    const url = `${MESSENGER_URL}?text=${encodeURIComponent(body)}`;
+    window.open(url, "_blank", "noopener");
     setSubmitted(true);
   }
 
@@ -35,7 +32,7 @@ export default function ContactForm() {
       <div className="success">
         <h3>Almost done!</h3>
         <p>
-          Your email app should open with your message pre-filled. Just press{" "}
+          Messenger should open with your message pre-filled. Just tap{" "}
           <strong>Send</strong> to send it to us.
         </p>
       </div>

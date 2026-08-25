@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { allServices } from "@/lib/services";
 
-const CONTACT_EMAIL = "tristansamoy2@gmail.com";
+const MESSENGER_URL = "https://m.me/gtbymgc";
 
 const groupedServices = allServices.reduce((acc, service) => {
   (acc[service.category] = acc[service.category] || []).push(service);
@@ -99,9 +99,8 @@ export default function BookingForm() {
 
     const data = Object.fromEntries(new FormData(e.target).entries());
 
-    const subject = `Booking Request: ${data.service} from ${data.name}`;
     const body = [
-      "Booking Request",
+      "New Booking Request",
       "",
       `Name: ${data.name}`,
       `Phone: ${data.phone}`,
@@ -113,10 +112,8 @@ export default function BookingForm() {
       .filter(Boolean)
       .join("\n");
 
-    const url = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = url;
+    const url = `${MESSENGER_URL}?text=${encodeURIComponent(body)}`;
+    window.open(url, "_blank", "noopener");
     setSubmitted(true);
   }
 
@@ -125,8 +122,8 @@ export default function BookingForm() {
       <div className="success">
         <h3>Almost done!</h3>
         <p>
-          Your email app should open with your booking details pre-filled. Just
-          press <strong>Send</strong> to send it to us.
+          Messenger should open with your booking details pre-filled. Just tap{" "}
+          <strong>Send</strong> to send it to us.
         </p>
       </div>
     );
