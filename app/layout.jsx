@@ -142,7 +142,6 @@ const localBusinessJsonLd = {
   image: `${SITE_URL}/logo.webp`,
   url: SITE_URL,
   telephone: "+639632971024",
-  email: "hello@mgcaesthetics.com",
   priceRange: "₱₱",
   address: {
     "@type": "PostalAddress",
@@ -180,6 +179,24 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
+        {process.env.NEXT_PUBLIC_GA_ID ? (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+                `,
+              }}
+            />
+          </>
+        ) : null}
       </head>
       <body>
         <SplashScreen />

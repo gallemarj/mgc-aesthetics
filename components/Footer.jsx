@@ -62,7 +62,6 @@ export default function Footer() {
               <li>Magallanes Street, Poblacion Sur</li>
               <li>Paniqui, Tarlac</li>
               <li>0963-297-1024</li>
-              <li>hello@mgcaesthetics.com</li>
             </ul>
           </div>
         </div>

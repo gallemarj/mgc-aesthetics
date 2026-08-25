@@ -22,7 +22,7 @@ export default function SplashScreen() {
     <div className={`splash ${fading ? "splash--fade" : ""}`}>
       <div className="splash__logo">
         <Image
-          src="/logo-sm.png"
+          src="/logofix2.webp"
           alt="MGC Aesthetics logo"
           width={120}
           height={120}

@@ -10,20 +10,19 @@ export default function TestimonialCarousel({ testimonials }) {
   const count = testimonials.length;
 
   useEffect(() => {
-    let start = null;
     let rafId = null;
-    let running = false;
+    let lastTime = null;
 
     function tick(timestamp) {
-      if (!running) return;
-      if (!start) start = timestamp;
-      const elapsed = (timestamp - start) / 1000;
-      angleRef.current = (elapsed * 3) % 360;
-
-      const w = window.innerWidth;
-      const radius = w < 480 ? 170 : w < 768 ? 260 : 440;
+      if (lastTime !== null) {
+        const dt = (timestamp - lastTime) / 1000;
+        angleRef.current = (angleRef.current + dt * 3) % 360;
+      }
+      lastTime = timestamp;
 
       if (stageRef.current) {
+        const w = window.innerWidth;
+        const radius = w < 480 ? 170 : w < 768 ? 260 : 440;
         const cards = stageRef.current.children;
         for (let i = 0; i < count; i++) {
           const a = ((360 / count) * i + angleRef.current) * (Math.PI / 180);
@@ -36,31 +35,10 @@ export default function TestimonialCarousel({ testimonials }) {
       rafId = requestAnimationFrame(tick);
     }
 
-    function startLoop() {
-      if (running) return;
-      running = true;
-      start = null;
-      rafId = requestAnimationFrame(tick);
-    }
-
-    function stopLoop() {
-      running = false;
-      if (rafId) cancelAnimationFrame(rafId);
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) startLoop();
-        else stopLoop();
-      },
-      { threshold: 0.05 }
-    );
-
-    if (stageRef.current) observer.observe(stageRef.current);
+    rafId = requestAnimationFrame(tick);
 
     return () => {
-      stopLoop();
-      observer.disconnect();
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, [count]);
 

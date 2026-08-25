@@ -1782,17 +1782,6 @@ label {
           background: linear-gradient(to top, rgba(0,0,0,0.45), transparent 45%);
         }
 
-        .slide__label {
-          position: absolute;
-          bottom: 28px;
-          left: 32px;
-          right: 32px;
-          z-index: 2;
-          font-size: 18px;
-          font-weight: 600;
-          color: var(--white);
-        }
-
         .hero__text {
           position: absolute;
           z-index: 10;

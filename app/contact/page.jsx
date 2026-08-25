@@ -55,10 +55,6 @@ export default function ContactPage() {
                     <span>0963-297-1024</span>
                   </div>
                   <div className="contact-detail">
-                    <span className="contact-detail__label">Email</span>
-                    <span>hello@mgcaesthetics.com</span>
-                  </div>
-                  <div className="contact-detail">
                     <span className="contact-detail__label">Hours</span>
                     <span>
                       Mon: Closed

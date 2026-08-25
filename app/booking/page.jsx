@@ -39,10 +39,6 @@ export default function BookingPage() {
                     <strong>Phone</strong>
                     <p>0963-297-1024</p>
                   </div>
-                  <div>
-                    <strong>Email</strong>
-                    <p>hello@mgcaesthetics.com</p>
-                  </div>
                 </div>
 
                 <a

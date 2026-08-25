@@ -2,7 +2,17 @@
 
 import { useState } from "react";
 
-const MESSENGER_URL = "https://m.me/gtbymgc";
+const MESSENGER_PAGE = "gtbymgc";
+
+function buildMessengerUrl(text) {
+  const isMobile =
+    typeof window !== "undefined" &&
+    /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  const base = isMobile
+    ? `https://m.me/${MESSENGER_PAGE}`
+    : `https://www.facebook.com/messages/t/${MESSENGER_PAGE}`;
+  return `${base}?text=${encodeURIComponent(text)}`;
+}
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -15,14 +25,13 @@ export default function ContactForm() {
       "New Contact Message",
       "",
       `Name: ${data.name}`,
-      `Email: ${data.email}`,
       `Subject: ${data.subject}`,
       data.message ? `Message: ${data.message}` : "",
     ]
       .filter(Boolean)
       .join("\n");
 
-    const url = `${MESSENGER_URL}?text=${encodeURIComponent(body)}`;
+    const url = buildMessengerUrl(body);
     window.open(url, "_blank", "noopener");
     setSubmitted(true);
   }
@@ -41,27 +50,15 @@ export default function ContactForm() {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <div className="form__row">
-        <div className="form__group">
-          <label htmlFor="contact-name">Full Name</label>
-          <input
-            type="text"
-            id="contact-name"
-            name="name"
-            required
-            placeholder="Juan Dela Cruz"
-          />
-        </div>
-        <div className="form__group">
-          <label htmlFor="contact-email">Email</label>
-          <input
-            type="email"
-            id="contact-email"
-            name="email"
-            required
-            placeholder="juan@example.com"
-          />
-        </div>
+      <div className="form__group">
+        <label htmlFor="contact-name">Full Name</label>
+        <input
+          type="text"
+          id="contact-name"
+          name="name"
+          required
+          placeholder="Juan Dela Cruz"
+        />
       </div>
 
       <div className="form__group">

@@ -18,9 +18,9 @@ const slides = [
     headline: "RELAX",
   },
   {
-    url: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1600&q=80",
-    title: "Massage & Spa",
-    alt: "Relaxing massage and spa treatment at MGC Aesthetics in Paniqui, Tarlac",
+    url: "/homepic/homepic3.avif",
+    title: "LED Light Facial",
+    alt: "LED light therapy facial treatment at MGC Aesthetics in Paniqui, Tarlac",
     headline: "RENEW",
   },
 ];
@@ -87,7 +87,6 @@ export default function HeroCarousel() {
               className="slide__img"
             />
             <div className="slide__overlay" />
-            <p className="slide__label">{activeSlide.title}</p>
           </motion.a>
         </AnimatePresence>
       </div>

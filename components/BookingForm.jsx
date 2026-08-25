@@ -3,12 +3,31 @@
 import { useState, useRef, useEffect } from "react";
 import { allServices } from "@/lib/services";
 
-const MESSENGER_URL = "https://m.me/gtbymgc";
+const MESSENGER_PAGE = "gtbymgc";
+
+function buildMessengerUrl(text) {
+  const isMobile =
+    typeof window !== "undefined" &&
+    /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  const base = isMobile
+    ? `https://m.me/${MESSENGER_PAGE}`
+    : `https://www.facebook.com/messages/t/${MESSENGER_PAGE}`;
+  return `${base}?text=${encodeURIComponent(text)}`;
+}
 
 const groupedServices = allServices.reduce((acc, service) => {
   (acc[service.category] = acc[service.category] || []).push(service);
   return acc;
 }, {});
+
+const timeSlots = [];
+for (let h = 10; h <= 16; h++) {
+  for (const m of [0, 30]) {
+    const period = h >= 12 ? "PM" : "AM";
+    const hr = h % 12 === 0 ? 12 : h % 12;
+    timeSlots.push(`${hr}:${m === 0 ? "00" : "30"} ${period}`);
+  }
+}
 
 function ServiceSelect({ selected, onSelect, onOpenChange }) {
   const [open, setOpen] = useState(false);
@@ -104,15 +123,15 @@ export default function BookingForm() {
       "",
       `Name: ${data.name}`,
       `Phone: ${data.phone}`,
-      `Email: ${data.email}`,
       `Service: ${data.service}`,
       `Preferred Date: ${data.date || "—"}`,
+      data.time ? `Time: ${data.time}` : "",
       data.message ? `Message: ${data.message}` : "",
     ]
       .filter(Boolean)
       .join("\n");
 
-    const url = `${MESSENGER_URL}?text=${encodeURIComponent(body)}`;
+    const url = buildMessengerUrl(body);
     window.open(url, "_blank", "noopener");
     setSubmitted(true);
   }
@@ -154,45 +173,46 @@ export default function BookingForm() {
         </div>
       </div>
 
-      <div className="form__row">
-        <div className="form__group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="juan@example.com"
-          />
-        </div>
-        <div className="form__group">
-          <label htmlFor="service">Service</label>
-          <ServiceSelect
-            selected={selectedService}
-            onSelect={(item) => {
-              setSelectedService(item);
-              setServiceError(false);
-            }}
-            onOpenChange={setMenuOpen}
-          />
-          {serviceError && !menuOpen && (
-            <p className="form__error">Please select a service.</p>
-          )}
-          <input
-            type="hidden"
-            name="service"
-            value={
-              selectedService
-                ? `${selectedService.name} — ${selectedService.price} (${selectedService.category})`
-                : ""
-            }
-          />
-        </div>
+      <div className="form__group">
+        <label htmlFor="service">Service</label>
+        <ServiceSelect
+          selected={selectedService}
+          onSelect={(item) => {
+            setSelectedService(item);
+            setServiceError(false);
+          }}
+          onOpenChange={setMenuOpen}
+        />
+        {serviceError && !menuOpen && (
+          <p className="form__error">Please select a service.</p>
+        )}
+        <input
+          type="hidden"
+          name="service"
+          value={
+            selectedService
+              ? `${selectedService.name} — ${selectedService.price} (${selectedService.category})`
+              : ""
+          }
+        />
       </div>
 
-      <div className="form__group">
-        <label htmlFor="date">Preferred Date & Time</label>
-        <input type="text" id="date" name="date" placeholder="e.g. Monday, July 10th at 2pm" />
+      <div className="form__row">
+        <div className="form__group">
+          <label htmlFor="date">Preferred Date</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+        <div className="form__group">
+          <label htmlFor="time">Preferred Time</label>
+          <select id="time" name="time" required>
+            <option value="">Select a time</option>
+            {timeSlots.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className="form__group">
