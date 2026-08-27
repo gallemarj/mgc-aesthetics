@@ -1873,6 +1873,7 @@ label {
         @media (max-width: 768px) {
           .hero { height: 100vh; min-height: 500px; }
           .hero__stage { position: absolute; inset: 0; }
+          .slide__img { object-fit: cover; object-position: center; }
           .hero__text { position: absolute; top: 135px; left: 24px; right: 24px; text-align: center; }
           .hero__title-wrap { height: clamp(4rem, 14vw, 6rem); width: 100%; max-width: none; }
           .hero__title { font-size: clamp(2rem, 8vw, 3rem); max-width: 100%; }
