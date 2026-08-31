@@ -95,8 +95,11 @@ export const metadata = {
     images: [`${SITE_URL}/homepic/homepic1.avif`],
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
+  },
+  verification: {
+    google: "YIrTNAkb9vcKSBi4spf_hM_sfF0be94-SEuQEjmK_G0",
   },
   icons: {
     icon: [
