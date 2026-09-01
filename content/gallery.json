@@ -1,6 +1,9 @@
 {
   "photos": [
     {
+      "src": "/pictures/random.jpg"
+    },
+    {
       "src": "/pictures/gallery-01.jpg"
     },
     {
