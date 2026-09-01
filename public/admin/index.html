@@ -39,5 +39,50 @@
       };
     })();
   </script>
+  <script>
+    (function () {
+      function isBar(el) {
+        return (
+          el &&
+          el.nodeName === "DIV" &&
+          el.firstElementChild &&
+          el.firstElementChild.nodeName === "BUTTON" &&
+          el.firstElementChild.querySelector("svg")
+        );
+      }
+      function hookLabel(label, bar) {
+        if (label.__mgcHooked) return;
+        label.__mgcHooked = true;
+        label.classList.add("mgc-clickable");
+        label.addEventListener("click", function (e) {
+          if (e.target && e.target.closest && e.target.closest("button, input, select, textarea, a"))
+            return;
+          var toggle = bar.firstElementChild;
+          if (toggle) toggle.click();
+        });
+      }
+      function scan(node) {
+        if (!node || node.nodeType !== 1) return;
+        var divs = node.querySelectorAll ? node.querySelectorAll("div") : [];
+        for (var i = 0; i < divs.length; i++) {
+          var d = divs[i];
+          if (isBar(d)) {
+            var label = d.nextElementSibling;
+            if (label && label.nodeName === "DIV") hookLabel(label, d);
+          }
+        }
+      }
+      var observer = new MutationObserver(function (mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          var added = mutations[i].addedNodes;
+          for (var j = 0; j < added.length; j++) scan(added[j]);
+        }
+      });
+      if (document.body) {
+        scan(document);
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+    })();
+  </script>
 </body>
 </html>
