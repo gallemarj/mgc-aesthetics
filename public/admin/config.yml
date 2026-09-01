@@ -1,0 +1,109 @@
+backend:
+  name: github
+  repo: gallemarj/mgc-aesthetics
+  branch: main
+  base_url: https://mgcaesthetics.com
+  auth_endpoint: /.netlify/functions/oauth/auth
+
+media_folder: public/pictures
+public_folder: /pictures
+
+collections:
+  - name: gallery
+    label: Client Gallery
+    label_singular: Photo
+    files:
+      - name: gallery
+        label: Gallery Photos
+        file: content/gallery.json
+        fields:
+          - label: Photos
+            name: photos
+            widget: list
+            summary: "{{fields.src}}"
+            allow_add: true
+            fields:
+              - { label: Image, name: src, widget: image, choose_url: false }
+
+  - name: hero
+    label: Homepage Hero
+    label_singular: Slide
+    files:
+      - name: hero
+        label: Hero Slides
+        file: content/hero.json
+        fields:
+          - label: Slides
+            name: slides
+            widget: list
+            summary: "{{fields.title}} — {{fields.headline}}"
+            fields:
+              - { label: Image, name: url, widget: image, choose_url: false }
+              - { label: Title, name: title, widget: string }
+              - { label: Headline, name: headline, widget: string }
+              - { label: Alt Text, name: alt, widget: string, required: false }
+
+  - name: announcements
+    label: Announcement Bar
+    label_singular: Message
+    files:
+      - name: announcements
+        label: Announcement Messages
+        file: content/announcements.json
+        fields:
+          - label: Messages
+            name: messages
+            widget: list
+            summary: "{{fields.text}}"
+            fields:
+              - { label: Message, name: text, widget: string }
+
+  - name: services
+    label: Services & Prices
+    files:
+      - name: services
+        label: Services & Prices
+        file: content/services.json
+        fields:
+          - label: Featured Packages
+            name: featuredServices
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Slug, name: slug, widget: string, required: false }
+              - { label: Title, name: title, widget: string }
+              - { label: Short Description, name: shortDesc, widget: text }
+              - { label: Description, name: description, widget: text }
+              - { label: Price, name: price, widget: string }
+              - { label: Duration, name: duration, widget: string }
+          - label: Price List Categories
+            name: serviceCategories
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Category Name, name: name, widget: string }
+              - { label: Note, name: note, widget: string, required: false }
+              - label: Items
+                name: items
+                widget: list
+                summary: "{{fields.name}} — {{fields.price}}"
+                fields:
+                  - { label: Service Name, name: name, widget: string }
+                  - { label: Price, name: price, widget: string }
+
+  - name: reviews
+    label: Client Reviews
+    label_singular: Review
+    files:
+      - name: reviews
+        label: Client Reviews
+        file: content/reviews.json
+        fields:
+          - label: Reviews
+            name: reviews
+            widget: list
+            summary: "{{fields.name}} — {{fields.rating}}★"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Rating, name: rating, widget: number, min: 1, max: 5 }
+              - { label: Review Text, name: text, widget: text }

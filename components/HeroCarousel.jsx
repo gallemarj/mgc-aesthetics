@@ -3,27 +3,9 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import content from "@/content/hero.json";
 
-const slides = [
-  {
-    url: "/homepic/homepic1.avif",
-    title: "Head Spa",
-    alt: "Head spa hair wash treatment at MGC Aesthetics in Paniqui, Tarlac",
-    headline: "GLOW",
-  },
-  {
-    url: "/homepic/homepic2.avif",
-    title: "Magneto RF",
-    alt: "Magneto RF face lifting treatment at MGC Aesthetics in Paniqui, Tarlac",
-    headline: "RELAX",
-  },
-  {
-    url: "/homepic/homepic3.avif",
-    title: "LED Light Facial",
-    alt: "LED light therapy facial treatment at MGC Aesthetics in Paniqui, Tarlac",
-    headline: "RENEW",
-  },
-];
+const slides = content.slides;
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);

@@ -1,12 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import content from "@/content/announcements.json";
 
-const announcements = [
-  "Welcome to MGC Aesthetics — premium beauty and wellness",
-  "Open Tuesday to Sunday, 10:00 AM – 6:00 PM",
-  "Visit us in Paniqui, Tarlac or message us on Messenger",
-];
+const announcements = content.messages.map((m) => m.text);
 
 export default function AnnouncementBar() {
   const [current, setCurrent] = useState(0);
