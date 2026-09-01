@@ -8,7 +8,37 @@
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.4.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@3.16.0/dist/decap-cms.js"></script>
+  <script>
+    (function () {
+      var box = document.createElement("pre");
+      box.setAttribute("id", "mgc-debug");
+      box.style.cssText =
+        "position:fixed;bottom:10px;left:10px;z-index:999999;max-width:90%;max-height:220px;overflow:auto;background:rgba(0,0,0,0.88);color:#ff6b6b;font-size:12px;font-family:monospace;padding:10px;border-radius:6px;display:none;white-space:pre-wrap;word-break:break-word;pointer-events:none;";
+      document.body.appendChild(box);
+      function show(msg) {
+        box.style.display = "block";
+        box.textContent =
+          new Date().toLocaleTimeString() + " " + msg + "\n" + box.textContent;
+      }
+      window.addEventListener("error", function (e) {
+        show("error: " + e.message + " @ " + (e.filename || "") + ":" + (e.lineno || ""));
+      });
+      window.addEventListener("unhandledrejection", function (e) {
+        show("rejected: " + (e.reason && (e.reason.message || e.reason) || e.reason));
+      });
+      var origError = console.error;
+      console.error = function () {
+        try {
+          var parts = Array.prototype.slice.call(arguments).map(function (a) {
+            return a && a.message ? a.message : String(a);
+          });
+          show("console.error: " + parts.join(" "));
+        } catch (err) {}
+        origError.apply(console, arguments);
+      };
+    })();
+  </script>
   <script>
     document.addEventListener("click", function (e) {
       if (!e.target || !e.target.closest) return;
