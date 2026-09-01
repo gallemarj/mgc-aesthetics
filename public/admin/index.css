@@ -14,3 +14,11 @@ body {
   max-width: 220px;
   border-radius: 12px;
 }
+
+[data-testid^="styled-list-item-top-bar-"] + div {
+  cursor: pointer;
+}
+
+[data-testid^="styled-list-item-top-bar-"] + div:hover {
+  background: #f0ece5;
+}

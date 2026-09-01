@@ -9,5 +9,26 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.4.0/dist/decap-cms.js"></script>
+  <script>
+    document.addEventListener("click", function (e) {
+      var node = e.target;
+      while (node && node !== document.body) {
+        var topBar = node.querySelector
+          ? node.querySelector('[data-testid^="styled-list-item-top-bar-"]')
+          : null;
+        if (topBar) {
+          var label = topBar.nextElementSibling;
+          if (label && label.contains(e.target)) {
+            var toggle = topBar.querySelector("button");
+            if (toggle) {
+              toggle.click();
+            }
+          }
+          return;
+        }
+        node = node.parentElement;
+      }
+    }, true);
+  </script>
 </body>
 </html>
