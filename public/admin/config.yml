@@ -2,8 +2,7 @@ backend:
   name: github
   repo: gallemarj/mgc-aesthetics
   branch: main
-  # REPLACE with your Vercel gateway URL after you deploy it (e.g. https://your-gateway-app.vercel.app)
-  base_url: https://YOUR-GATEWAY.vercel.app
+  base_url: https://mgc-oauth-gateway.vercel.app
   auth_endpoint: api/oauth
 
 media_folder: public/pictures
