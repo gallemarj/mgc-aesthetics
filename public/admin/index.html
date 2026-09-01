@@ -34,6 +34,36 @@
         node = node.parentElement;
       }
     }, true);
+
+    (function () {
+      function isCollapsibleBar(el) {
+        return (
+          el &&
+          el.nodeName === "DIV" &&
+          el.firstElementChild &&
+          el.firstElementChild.nodeName === "BUTTON" &&
+          el.firstElementChild.querySelector("svg")
+        );
+      }
+      function styleLabels(root) {
+        var divs = (root || document).querySelectorAll("div");
+        for (var i = 0; i < divs.length; i++) {
+          var d = divs[i];
+          if (!isCollapsibleBar(d)) continue;
+          var label = d.nextElementSibling;
+          if (label && label.nodeName === "DIV" && !label.classList.contains("mgc-clickable")) {
+            label.classList.add("mgc-clickable");
+          }
+        }
+      }
+      var observer = new MutationObserver(function () {
+        styleLabels(document);
+      });
+      if (document.body) {
+        styleLabels(document);
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+    })();
   </script>
 </body>
 </html>

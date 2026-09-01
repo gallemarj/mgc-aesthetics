@@ -41,19 +41,7 @@ collections:
                 name: src
                 widget: image
                 choose_url: false
-                hint: "Any size is fine — the site crops photos to fit automatically. Big photos get shrunk down before uploading."
-                media_processing:
-                  enabled: true
-                  format:
-                    enabled: true
-                    default: webp
-                  quality: 80
-                  strip_metadata: true
-                  width: 1600
-                  height: null
-                media_library:
-                  config:
-                    max_file_size: 10485760
+                hint: "Any size is fine — the site crops photos to fit automatically."
 
   - name: hero
     label: Homepage Hero
@@ -75,19 +63,7 @@ collections:
                 name: url
                 widget: image
                 choose_url: false
-                hint: "Wide landscape photos look best here. Any size is fine — it gets resized and cropped."
-                media_processing:
-                  enabled: true
-                  format:
-                    enabled: true
-                    default: webp
-                  quality: 80
-                  strip_metadata: true
-                  width: 1920
-                  height: null
-                media_library:
-                  config:
-                    max_file_size: 10485760
+                hint: "Wide landscape photos look best here. Any size is fine."
               - { label: Title, name: title, widget: string, hint: "What the treatment is, e.g. Head Spa" }
               - { label: Headline, name: headline, widget: string, hint: "The big word shown over the image, e.g. GLOW" }
               - { label: Alt Text, name: alt, widget: string, required: false }
