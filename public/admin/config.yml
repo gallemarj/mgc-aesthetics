@@ -5,6 +5,16 @@ backend:
   base_url: https://mgc-oauth-gateway.vercel.app
   auth_endpoint: api/oauth
 
+site_url: https://mgcaesthetics.com
+display_url: https://mgcaesthetics.com
+
+logo:
+  src: https://mgcaesthetics.com/logo.webp
+  show_in_header: true
+
+editor:
+  preview: false
+
 media_folder: public/pictures
 public_folder: /pictures
 
@@ -12,54 +22,97 @@ collections:
   - name: gallery
     label: Client Gallery
     label_singular: Photo
+    description: Add or remove client before & after photos. New photos go to the top automatically.
     files:
       - name: gallery
-        label: Gallery Photos
+        label: Client Photos
+        description: Tap "Add Photo", pick a picture, then press Save.
         file: content/gallery.json
         fields:
           - label: Photos
             name: photos
             widget: list
-            summary: "{{fields.src}}"
+            summary: "Photo {{index}}"
             allow_add: true
+            add_to_top: true
+            collapsed: true
             fields:
-              - { label: Image, name: src, widget: image, choose_url: false }
+              - label: Photo
+                name: src
+                widget: image
+                choose_url: false
+                hint: "Any size is fine — the site crops photos to fit automatically. Big photos get shrunk down before uploading."
+                media_processing:
+                  enabled: true
+                  format:
+                    enabled: true
+                    default: webp
+                  quality: 80
+                  strip_metadata: true
+                  width: 1600
+                  height: null
+                media_library:
+                  config:
+                    max_file_size: 10485760
 
   - name: hero
     label: Homepage Hero
     label_singular: Slide
+    description: The three big images that rotate on the front page.
     files:
       - name: hero
-        label: Hero Slides
+        label: Homepage Slides
+        description: Change the big homepage images and the one-word headline (GLOW, RELAX, RENEW).
         file: content/hero.json
         fields:
           - label: Slides
             name: slides
             widget: list
             summary: "{{fields.title}} — {{fields.headline}}"
+            add_to_top: true
             fields:
-              - { label: Image, name: url, widget: image, choose_url: false }
-              - { label: Title, name: title, widget: string }
-              - { label: Headline, name: headline, widget: string }
+              - label: Image
+                name: url
+                widget: image
+                choose_url: false
+                hint: "Wide landscape photos look best here. Any size is fine — it gets resized and cropped."
+                media_processing:
+                  enabled: true
+                  format:
+                    enabled: true
+                    default: webp
+                  quality: 80
+                  strip_metadata: true
+                  width: 1920
+                  height: null
+                media_library:
+                  config:
+                    max_file_size: 10485760
+              - { label: Title, name: title, widget: string, hint: "What the treatment is, e.g. Head Spa" }
+              - { label: Headline, name: headline, widget: string, hint: "The big word shown over the image, e.g. GLOW" }
               - { label: Alt Text, name: alt, widget: string, required: false }
 
   - name: announcements
     label: Announcement Bar
     label_singular: Message
+    description: The scrolling messages at the very top of the website.
     files:
       - name: announcements
         label: Announcement Messages
+        description: Example — "Open Tuesday to Sunday, 10AM to 6PM" or "20% OFF this month!"
         file: content/announcements.json
         fields:
           - label: Messages
             name: messages
             widget: list
             summary: "{{fields.text}}"
+            add_to_top: true
             fields:
               - { label: Message, name: text, widget: string }
 
   - name: services
     label: Services & Prices
+    description: Services and prices shown on the Services page. Changes go live immediately.
     files:
       - name: services
         label: Services & Prices
@@ -68,25 +121,28 @@ collections:
           - label: Featured Packages
             name: featuredServices
             widget: list
-            summary: "{{fields.title}}"
+            summary: "{{fields.title}} — {{fields.price}}"
+            add_to_top: true
             fields:
-              - { label: Slug, name: slug, widget: string, required: false }
+              - { label: Slug, name: slug, widget: string, required: false, hint: "Leave as is unless you know what this is for." }
               - { label: Title, name: title, widget: string }
               - { label: Short Description, name: shortDesc, widget: text }
-              - { label: Description, name: description, widget: text }
-              - { label: Price, name: price, widget: string }
-              - { label: Duration, name: duration, widget: string }
+              - { label: Full Description, name: description, widget: text }
+              - { label: Price, name: price, widget: string, hint: "e.g. ₱999" }
+              - { label: Duration, name: duration, widget: string, hint: "e.g. 45 minutes" }
           - label: Price List Categories
             name: serviceCategories
             widget: list
             summary: "{{fields.name}}"
+            add_to_top: true
             fields:
               - { label: Category Name, name: name, widget: string }
-              - { label: Note, name: note, widget: string, required: false }
+              - { label: Note, name: note, widget: string, required: false, hint: "Optional — e.g. Prices start at" }
               - label: Items
                 name: items
                 widget: list
                 summary: "{{fields.name}} — {{fields.price}}"
+                add_to_top: true
                 fields:
                   - { label: Service Name, name: name, widget: string }
                   - { label: Price, name: price, widget: string }
@@ -94,6 +150,7 @@ collections:
   - name: reviews
     label: Client Reviews
     label_singular: Review
+    description: Testimonials shown on the homepage. Paste in new reviews as you get them.
     files:
       - name: reviews
         label: Client Reviews
@@ -103,7 +160,8 @@ collections:
             name: reviews
             widget: list
             summary: "{{fields.name}} — {{fields.rating}}★"
+            add_to_top: true
             fields:
-              - { label: Name, name: name, widget: string }
+              - { label: Name, name: name, widget: string, hint: "Use 'Verified client' if you'd rather stay anonymous" }
               - { label: Rating, name: rating, widget: number, min: 1, max: 5 }
               - { label: Review Text, name: text, widget: text }
