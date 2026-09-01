@@ -1,14 +1,6 @@
 {
   "featuredServices": [
     {
-      "slug": "",
-      "title": "test",
-      "shortDesc": "test test",
-      "description": "test",
-      "price": "44",
-      "duration": "19"
-    },
-    {
       "slug": "signature-head-spa",
       "title": "Signature Head Spa",
       "shortDesc": "45 minutes of pure head, neck & shoulder relaxation.",
