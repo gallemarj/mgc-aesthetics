@@ -2,8 +2,9 @@ backend:
   name: github
   repo: gallemarj/mgc-aesthetics
   branch: main
-  base_url: https://mgcaesthetics.com
-  auth_endpoint: /.netlify/functions/oauth/auth
+  # REPLACE with your Vercel gateway URL after you deploy it (e.g. https://your-gateway-app.vercel.app)
+  base_url: https://YOUR-GATEWAY.vercel.app
+  auth_endpoint: api/oauth
 
 media_folder: public/pictures
 public_folder: /pictures

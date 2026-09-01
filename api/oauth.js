@@ -1,18 +1,6 @@
 const GITHUB_AUTHORIZE = "https://github.com/login/oauth/authorize";
 const GITHUB_TOKEN = "https://github.com/login/oauth/access_token";
 
-const json = (statusCode, body) => ({
-  statusCode,
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(body),
-});
-
-const html = (statusCode, body) => ({
-  statusCode,
-  headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" },
-  body,
-});
-
 const randomState = () =>
   Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
 
@@ -34,47 +22,47 @@ const callbackPage = (siteUrl, token) => `<!doctype html>
 </body>
 </html>`;
 
-exports.handler = async (event) => {
-  const host = event.headers.host || "mgcaesthetics.com";
+export default async function handler(req, res) {
+  const host = req.headers.host || "mgcaesthetics.com";
   const siteUrl = `https://${host}`;
+  const targetSite = process.env.OAUTH_SITE_URL || siteUrl;
   const clientId = process.env.OAUTH_GITHUB_CLIENT_ID;
   const clientSecret = process.env.OAUTH_GITHUB_CLIENT_SECRET;
 
   if (!clientId || !clientSecret) {
-    return html(
-      500,
-      "<h1>OAuth is not configured</h1><p>Add OAUTH_GITHUB_CLIENT_ID and OAUTH_GITHUB_CLIENT_SECRET to your Netlify environment variables.</p>"
-    );
+    res
+      .status(500)
+      .send(
+        "<h1>OAuth is not configured</h1><p>Add OAUTH_GITHUB_CLIENT_ID and OAUTH_GITHUB_CLIENT_SECRET to your Vercel environment variables.</p>"
+      );
+    return;
   }
 
-  const path = (event.path || "").replace(/\/+$/, "");
-  const isCallback = path.endsWith("/callback");
+  const query = req.query || {};
 
-  if (isCallback) {
-    const params = event.queryStringParameters || {};
-    if (!params.code) {
-      return json(400, { error: "Missing code parameter" });
-    }
+  if (query.code) {
     const body = new URLSearchParams();
     body.set("client_id", clientId);
     body.set("client_secret", clientSecret);
-    body.set("code", params.code);
+    body.set("code", query.code);
 
-    const res = await fetch(GITHUB_TOKEN, {
+    const response = await fetch(GITHUB_TOKEN, {
       method: "POST",
       headers: { Accept: "application/json" },
       body,
     });
-    const data = await res.json();
+    const data = await response.json();
 
     if (!data.access_token) {
-      return html(500, "<h1>Authorization failed. Please try again.</h1>");
+      res.status(500).send("<h1>Authorization failed. Please try again.</h1>");
+      return;
     }
 
-    return html(200, callbackPage(siteUrl, data.access_token));
+    res.status(200).send(callbackPage(targetSite, data.access_token));
+    return;
   }
 
-  const redirectUri = `${siteUrl}/.netlify/functions/oauth/callback`;
+  const redirectUri = `${siteUrl}/api/oauth`;
   const authorizeUrl =
     `${GITHUB_AUTHORIZE}?` +
     `client_id=${encodeURIComponent(clientId)}` +
@@ -82,9 +70,5 @@ exports.handler = async (event) => {
     `&redirect_uri=${encodeURIComponent(redirectUri)}` +
     `&state=${randomState()}`;
 
-  return {
-    statusCode: 302,
-    headers: { Location: authorizeUrl, "Cache-Control": "no-store" },
-    body: "",
-  };
-};
+  res.status(302).setHeader("Location", authorizeUrl).end();
+}
