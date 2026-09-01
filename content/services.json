@@ -1,6 +1,14 @@
 {
   "featuredServices": [
     {
+      "slug": "",
+      "title": "test",
+      "shortDesc": "test test",
+      "description": "test",
+      "price": "44",
+      "duration": "19"
+    },
+    {
       "slug": "signature-head-spa",
       "title": "Signature Head Spa",
       "shortDesc": "45 minutes of pure head, neck & shoulder relaxation.",
@@ -37,80 +45,203 @@
     {
       "name": "Facial Services",
       "items": [
-        { "name": "Basic Facial", "price": "₱700" },
-        { "name": "Diamond Peel w/ PDT", "price": "₱1,000" },
-        { "name": "Hydra Cleanse Facial", "price": "₱1,200" },
-        { "name": "Galvanic Facial", "price": "₱1,200" },
-        { "name": "Mesofirm Facial", "price": "₱1,500" },
-        { "name": "Black Glow Facial", "price": "₱1,500" },
-        { "name": "Hydra Glow Facial", "price": "₱2,000" },
-        { "name": "MGC Signature Facial", "price": "₱2,500" }
+        {
+          "name": "Basic Facial",
+          "price": "₱700"
+        },
+        {
+          "name": "Diamond Peel w/ PDT",
+          "price": "₱1,000"
+        },
+        {
+          "name": "Hydra Cleanse Facial",
+          "price": "₱1,200"
+        },
+        {
+          "name": "Galvanic Facial",
+          "price": "₱1,200"
+        },
+        {
+          "name": "Mesofirm Facial",
+          "price": "₱1,500"
+        },
+        {
+          "name": "Black Glow Facial",
+          "price": "₱1,500"
+        },
+        {
+          "name": "Hydra Glow Facial",
+          "price": "₱2,000"
+        },
+        {
+          "name": "MGC Signature Facial",
+          "price": "₱2,500"
+        }
       ]
     },
     {
       "name": "Face Treatments",
       "items": [
-        { "name": "Magneto Face Lifting", "price": "₱1,000" },
-        { "name": "Red Blood Veins", "price": "₱1,000" },
-        { "name": "Eye-bag Reducer", "price": "₱1,200" },
-        { "name": "Melasma Treatment", "price": "₱1,500" },
-        { "name": "Acne Treatment", "price": "₱1,500" },
-        { "name": "Acne Scar Treatment", "price": "₱1,500" },
-        { "name": "BB Glow", "price": "₱1,500" },
-        { "name": "Hyperpigmentation Treatment", "price": "₱1,800" }
+        {
+          "name": "Magneto Face Lifting",
+          "price": "₱1,000"
+        },
+        {
+          "name": "Red Blood Veins",
+          "price": "₱1,000"
+        },
+        {
+          "name": "Eye-bag Reducer",
+          "price": "₱1,200"
+        },
+        {
+          "name": "Melasma Treatment",
+          "price": "₱1,500"
+        },
+        {
+          "name": "Acne Treatment",
+          "price": "₱1,500"
+        },
+        {
+          "name": "Acne Scar Treatment",
+          "price": "₱1,500"
+        },
+        {
+          "name": "BB Glow",
+          "price": "₱1,500"
+        },
+        {
+          "name": "Hyperpigmentation Treatment",
+          "price": "₱1,800"
+        }
       ]
     },
     {
       "name": "Body Treatments",
       "note": "Non-invasive procedures",
       "items": [
-        { "name": "RF Arm Tightening", "price": "₱800/session" },
-        { "name": "RF Leg Tightening", "price": "₱800/session" },
-        { "name": "Tummy Cavitation", "price": "₱1,000/session" },
-        { "name": "Stretch Mark Reducer", "price": "₱1,000/session" }
+        {
+          "name": "RF Arm Tightening",
+          "price": "₱800/session"
+        },
+        {
+          "name": "RF Leg Tightening",
+          "price": "₱800/session"
+        },
+        {
+          "name": "Tummy Cavitation",
+          "price": "₱1,000/session"
+        },
+        {
+          "name": "Stretch Mark Reducer",
+          "price": "₱1,000/session"
+        }
       ]
     },
     {
       "name": "Hair Removal Treatments",
       "items": [
-        { "name": "Upper & Lower Lips Hair Removal", "price": "₱800/session" },
-        { "name": "Underarm Hair Removal", "price": "₱800/session" },
-        { "name": "Underarm Whitening", "price": "₱800/session" },
-        { "name": "UA Combo", "price": "₱1,500/session" },
-        { "name": "Legs Hair Removal", "price": "₱1,000/session" }
+        {
+          "name": "Upper & Lower Lips Hair Removal",
+          "price": "₱800/session"
+        },
+        {
+          "name": "Underarm Hair Removal",
+          "price": "₱800/session"
+        },
+        {
+          "name": "Underarm Whitening",
+          "price": "₱800/session"
+        },
+        {
+          "name": "UA Combo",
+          "price": "₱1,500/session"
+        },
+        {
+          "name": "Legs Hair Removal",
+          "price": "₱1,000/session"
+        }
       ]
     },
     {
       "name": "Laser Removal",
       "note": "Prices start at",
       "items": [
-        { "name": "Body Tattoo Removal", "price": "₱600" },
-        { "name": "Eyebrow Tattoo Removal", "price": "₱1,500" },
-        { "name": "Mole Removal (raised)", "price": "₱1,500" },
-        { "name": "Mole Removal (flat)", "price": "₱1,000" },
-        { "name": "Warts Removal (face & neck)", "price": "₱1,500" },
-        { "name": "Plantar Warts Removal", "price": "₱1,000" },
-        { "name": "Syringoma", "price": "₱1,000" },
-        { "name": "Skintag", "price": "₱1,000" },
-        { "name": "Millia", "price": "₱700" }
+        {
+          "name": "Body Tattoo Removal",
+          "price": "₱600"
+        },
+        {
+          "name": "Eyebrow Tattoo Removal",
+          "price": "₱1,500"
+        },
+        {
+          "name": "Mole Removal (raised)",
+          "price": "₱1,500"
+        },
+        {
+          "name": "Mole Removal (flat)",
+          "price": "₱1,000"
+        },
+        {
+          "name": "Warts Removal (face & neck)",
+          "price": "₱1,500"
+        },
+        {
+          "name": "Plantar Warts Removal",
+          "price": "₱1,000"
+        },
+        {
+          "name": "Syringoma",
+          "price": "₱1,000"
+        },
+        {
+          "name": "Skintag",
+          "price": "₱1,000"
+        },
+        {
+          "name": "Millia",
+          "price": "₱700"
+        }
       ]
     },
     {
       "name": "Wax Services",
       "note": "Prices start at",
       "items": [
-        { "name": "Underarm", "price": "₱350" },
-        { "name": "Half Legs", "price": "₱800" },
-        { "name": "Full Legs", "price": "₱1,000" }
+        {
+          "name": "Underarm",
+          "price": "₱350"
+        },
+        {
+          "name": "Half Legs",
+          "price": "₱800"
+        },
+        {
+          "name": "Full Legs",
+          "price": "₱1,000"
+        }
       ]
     },
     {
       "name": "Lash Services",
       "items": [
-        { "name": "Lashlift w/ tint", "price": "₱450" },
-        { "name": "Classic Eyelash Extension", "price": "₱650" },
-        { "name": "Cat Eyelash Extension", "price": "₱800" },
-        { "name": "Volume Eyelash Extension", "price": "₱1,000" }
+        {
+          "name": "Lashlift w/ tint",
+          "price": "₱450"
+        },
+        {
+          "name": "Classic Eyelash Extension",
+          "price": "₱650"
+        },
+        {
+          "name": "Cat Eyelash Extension",
+          "price": "₱800"
+        },
+        {
+          "name": "Volume Eyelash Extension",
+          "price": "₱1,000"
+        }
       ]
     }
   ]
