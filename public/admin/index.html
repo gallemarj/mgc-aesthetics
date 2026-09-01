@@ -11,20 +11,25 @@
   <script src="https://unpkg.com/decap-cms@^3.4.0/dist/decap-cms.js"></script>
   <script>
     document.addEventListener("click", function (e) {
+      if (!e.target || !e.target.closest) return;
+      if (e.target.closest("button, input, select, textarea, a")) return;
       var node = e.target;
       while (node && node !== document.body) {
-        var topBar = node.querySelector
-          ? node.querySelector('[data-testid^="styled-list-item-top-bar-"]')
-          : null;
-        if (topBar) {
-          var label = topBar.nextElementSibling;
-          if (label && label.contains(e.target)) {
-            var toggle = topBar.querySelector("button");
-            if (toggle) {
-              toggle.click();
+        var kids = node.children;
+        for (var i = 0; i < kids.length; i++) {
+          var top = kids[i];
+          if (
+            top.nodeName === "DIV" &&
+            top.firstElementChild &&
+            top.firstElementChild.nodeName === "BUTTON" &&
+            top.firstElementChild.querySelector("svg")
+          ) {
+            var label = top.nextElementSibling;
+            if (label && label.contains(e.target)) {
+              top.firstElementChild.click();
+              return;
             }
           }
-          return;
         }
         node = node.parentElement;
       }

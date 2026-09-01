@@ -22,3 +22,11 @@ body {
 [data-testid^="styled-list-item-top-bar-"] + div:hover {
   background: #f0ece5;
 }
+
+div:has(> button > svg) + div {
+  cursor: pointer;
+}
+
+div:has(> button > svg) + div:hover {
+  background: #f0ece5;
+}
