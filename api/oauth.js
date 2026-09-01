@@ -10,13 +10,28 @@ const callbackPage = (siteUrl, token) => `<!doctype html>
 <body>
 <script>
   (function () {
-    var data = { token: ${JSON.stringify(token)}, provider: "github" };
-    if (window.opener) {
-      window.opener.postMessage(data, ${JSON.stringify(siteUrl)});
-      window.close();
-    } else {
+    var target = ${JSON.stringify(siteUrl)};
+    var provider = "github";
+
+    if (!window.opener) {
       document.write("Login complete. You can close this window and go back to the Content Manager.");
+      return;
     }
+
+    function receiveMessage(event) {
+      if (event.data === "authorizing:" + provider) {
+        window.removeEventListener("message", receiveMessage, false);
+        var payload = { token: ${JSON.stringify(token)} };
+        window.opener.postMessage(
+          "authorization:" + provider + ":success:" + JSON.stringify(payload),
+          target
+        );
+        window.close();
+      }
+    }
+
+    window.addEventListener("message", receiveMessage, false);
+    window.opener.postMessage("authorizing:" + provider, target);
   })();
 </script>
 </body>
